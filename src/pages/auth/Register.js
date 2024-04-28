@@ -22,7 +22,7 @@ const Register = () => {
     const { name, email, password, cPassword } = formData;
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {isLoading, isLoggedIn, isSuccess} = userSelector((state) => state.auth)
+    const {isLoading, isLoggedIn, isSuccess} = userSelector((state) => state.auth);
    
 
     const handleInputChange = (e) => {
@@ -61,7 +61,7 @@ const Register = () => {
         dispatch(RESET_AUTH())
     }, 
     [isSuccess, isLoggedIn, dispatch, navigate] 
-    )
+    );
 
     return (
     <>
