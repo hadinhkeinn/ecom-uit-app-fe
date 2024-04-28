@@ -92,7 +92,7 @@ const authSlice = createSlice({
       state.isSuccess = true;
       state.isLoggedIn = true;
       state.user = action.payload;
-      toast.success("Registration successful");
+      toast.success("Đăng kí tài khoản thành công!");
     })
     .addCase(register.rejected, (state, action) => {
       state.isLoading = false;
@@ -111,7 +111,7 @@ const authSlice = createSlice({
       state.isSuccess = true;
       state.isLoggedIn = true;
       state.user = action.payload;
-      toast.success("Login successful");
+      toast.success("Đăng nhập thành công!");
       console.log(action.payload);
     })
     .addCase(login.rejected, (state, action) => {
