@@ -11,7 +11,7 @@ const CarouselItem = ({url, name, price, description}) => {
             <p className='price'>
                 {`${price}₫`}
             </p>
-            <h4 className='product--name'>{shortenText(name, 35)}</h4>           
+            <h4 className='product--name'>{shortenText(name, 34)}</h4>           
         </Link>
         <button className='--btn --btn-primary --btn-block'>
             Thêm vào giỏ hàng

@@ -19,6 +19,17 @@ const activeLink = ({isActive}) => (isActive ? `${styles.active}` : "")
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false)
+    const [scrollPage, setScrollPage] = useState(false)     
+
+    const fixNavbar = () => {
+        if (window.scrollY > 50) {
+            setScrollPage(true)
+        } else {
+            setScrollPage(true)
+        }
+    };
+    window.addEventListener("scroll", fixNavbar)
+
     const toggleMenu = () => {
         setShowMenu(!showMenu)
     }
@@ -28,14 +39,14 @@ const Header = () => {
     const cart = (
         <span className={styles.cart}>
             <Link to="/cart">
-                Cart
+                Giỏ hàng
                 <FaShoppingCart size={20}/>
                 <p>0</p>
             </Link>
         </span>
     )
   return (
-    <header>
+    <header className={scrollPage ? `${styles.fixed}` : null}> 
         <div className={styles.header}>
             {logo}
             <nav className={showMenu ? `${styles["show-nav"]}` : `${styles["hide-nav"]}`}>
@@ -49,7 +60,7 @@ const Header = () => {
                     </li>
                     <li>
                         <NavLink to="/shop" className={activeLink} >
-                            Shop
+                            Cửa hàng
                         </NavLink>
                     </li>
                 </ul>
@@ -57,13 +68,13 @@ const Header = () => {
                 <div className={styles["header-right"]}>
                     <span className={styles.links}>
                         <NavLink to={"login"} className={activeLink}>
-                            Login
+                            Đăng nhập
                         </NavLink>
                         <NavLink to={"register"} className={activeLink}>
-                            Register
+                            Đăng ký
                         </NavLink>
                         <NavLink to={"order-history"} className={activeLink}>
-                            My order
+                            Đơn hàng
                         </NavLink>
                     </span>
                     {cart}

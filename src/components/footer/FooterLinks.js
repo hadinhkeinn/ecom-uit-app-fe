@@ -2,6 +2,15 @@ import React from 'react'
 import "./FooterLinks.scss"
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa"
 import logoImg from "../../assets/shopito_logo.png" 
+import { Link } from 'react-router-dom'
+
+export const logo = (
+    <div className='logo'>
+            <h2>
+                eCom<span>UIT</span>
+            </h2>
+    </div>
+)
 
 const FooterLinks = () => {
   return <>
@@ -13,16 +22,14 @@ const FooterLinks = () => {
                 <FaInstagram className="i"/>
                 <FaYoutube className="i"/>
             </div>
-            <h2>Let's Talk?</h2>
+            <h2>Bắt đầu nào!</h2>
             <a href='#home' className='btn btn-dark'>Liên hệ ngay!</a>
         </div>
     </section>
 
     <section className='footer-section'>
         <div className='container footer'>
-            <div className='footer-logo'>
-                <img src={logoImg} alt="logo" />
-            </div>
+            {logo}
             <div className='footer-menu'>
                 <p className='link-heading'>
                     Tính năng

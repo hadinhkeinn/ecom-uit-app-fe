@@ -25,6 +25,11 @@ const categories = [
   },
   {
     id: 5,
+    title: "Module, Mạch điện",
+    image: "https://nshopvn.com/wp-content/uploads/2024/04/mach-phun-suong-sieu-am-108khz-micro-nhieu-che-do-42ad-5-300x300.jpg",
+  },
+  {
+    id: 6,
     title: "Phụ kiện, Dụng cụ",
     image: "https://nshopvn.com/wp-content/uploads/2019/03/tru-dong-duc-cai-m3-01i0-x6zc-17dq-gcde-2d0i-693g-zou0-wkoc-7efz-2iul-4ncc-l6eq-gf81-gsxl-soyu-gv75-1-300x300.jpg",
   },
