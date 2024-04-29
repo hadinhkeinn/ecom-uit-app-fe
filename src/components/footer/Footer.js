@@ -6,7 +6,7 @@ const Footer = () => {
   const year = date.getFullYear()
   return (
     <div className={styles.footer}>&copy; {year} {' '}                          
-      All Rights Reserved
+      ECOMUIT.COM
     </div>
   )
 }

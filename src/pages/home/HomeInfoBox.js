@@ -5,23 +5,23 @@ import {BsFillCreditCardFill, BsCartCheck, BsClockHistory} from 'react-icons/bs'
 const data = [
     {
       icon: <FaShippingFast size={30} color="#8cb4f5" />,
-      heading: "Free Shipping",
-      text: "We offer free shipping on special products",
+      heading: "Miễn phí vận chuyển",
+      text: "Miễn phí vận chuyển cho các sản phẩm đặc biệt",
     },
     {
       icon: <BsFillCreditCardFill size={30} color="#f7d272" />,
-      heading: "Secure Payment",
-      text: "Make secure payment for your product.",
+      heading: "Thanh toán bảo mật",
+      text: "Thanh toán an toàn cho sản phẩm của bạn.",
     },
     {
       icon: <BsCartCheck size={30} color="#fa82ea" />,
-      heading: "Quality Products",
-      text: "We sell products from only tested and proven brands.",
+      heading: "Sản phẩm tốt",
+      text: "Chỉ bán sản phẩm từ các thương hiệu nối tiếng.",
     },
     {
       icon: <BsClockHistory size={30} color="#82fa9e" />,
-      heading: "24/7 Support",
-      text: "Get access to support from our exprt support team.",
+      heading: "Hỗ trợ 24/7",
+      text: "Nhận được sự hỗ trợ từ nhóm chuyên gia.",
     },
   ];
   

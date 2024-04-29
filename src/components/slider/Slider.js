@@ -54,7 +54,7 @@ const Slider = () => {
                             <p>{desc}</p> 
                             <hr />
                             <button className="--btn --btn-primary" onClick={() => navigate("/shop")}>
-                                Shop Now
+                                Mua ngay
                             </button>                     
                         </div>
                     </>
