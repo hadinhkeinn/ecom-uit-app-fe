@@ -29,7 +29,9 @@ const FooterLinks = () => {
 
     <section className='footer-section'>
         <div className='container footer'>
-            {logo}
+            <div className='footer-logo'>
+                <img src={logoImg} alt="logo" />
+            </div>
             <div className='footer-menu'>
                 <p className='link-heading'>
                     Tính năng
