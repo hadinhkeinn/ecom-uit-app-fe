@@ -51,14 +51,14 @@ const logoutUser = async () => {
     const cart = (
         <span className={styles.cart}>
             <Link to="/cart">
-                Cart
+                Giỏ hàng
                 <FaShoppingCart size={20}/>
                 <p>0</p>
             </Link>
         </span>
     )
   return (
-    <header>
+    <header className={scrollPage ? `${styles.fixed}` : null}> 
         <div className={styles.header}>
             {logo}
             <nav className={showMenu ? `${styles["show-nav"]}` : `${styles["hide-nav"]}`}>
@@ -72,7 +72,7 @@ const logoutUser = async () => {
                     </li>
                     <li>
                         <NavLink to="/shop" className={activeLink} >
-                            Shop
+                            Cửa hàng
                         </NavLink>
                     </li>
                 </ul>
@@ -81,22 +81,22 @@ const logoutUser = async () => {
                     <span className={styles.links}>
                     <ShowOnLogout>
                         <NavLink to={"login"} className={activeLink}>
-                            Login
+                            Đăng nhập
                         </NavLink>
                         </ShowOnLogout>
                         <ShowOnLogout>
                         <NavLink to={"register"} className={activeLink}>
-                            Register
+                            Đăng ký
                         </NavLink>
                         </ShowOnLogout>
                         <ShowOnLogin>
                         <NavLink to={"order-history"} className={activeLink}>
-                            My order
+                            Đơn hàng
                         </NavLink>
                         </ShowOnLogin>
                         <ShowOnLogin>
                         <Link to={"/"} onClick={logoutUser}>
-                            Logout
+                            Đăng xuất
                         </Link>
                         </ShowOnLogin>
                     </span>

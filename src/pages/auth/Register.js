@@ -9,7 +9,6 @@ import { useDispatch, userSelector} from 'react-redux';
 import { RESET_AUTH, register } from '../../redux/features/auth/authSlice';
 import Loader from '../../components/loader/Loader';
 
-
 const initialState = {
     name: "",
     email: "",
@@ -20,10 +19,10 @@ const initialState = {
 const Register = () => {
     const [formData, setFormData] = useState(initialState)
     const { name, email, password, cPassword } = formData;
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {isLoading, isLoggedIn, isSuccess} = userSelector((state) => state.auth);
-   
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
