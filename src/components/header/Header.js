@@ -18,7 +18,7 @@ export const logo = (
     </div>
 )
 
-const activeLink = ({isActive}) => (isActive ? `${styles.active}` : "")
+const activeLink = ({ isActive }) => (isActive ? `${styles.active}` : "")
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false)
@@ -27,10 +27,10 @@ const Header = () => {
     const navigate = useNavigate();
 
     const fixNavbar = () => {
-        if (window.scrollY > 50 ){
-            setScrollPage(true); 
+        if (window.scrollY > 50) {
+            setScrollPage(true);
         } else {
-            setScrollPage(false); 
+            setScrollPage(false);
         }
     };
     window.addEventListener("scroll", fixNavbar);
@@ -41,75 +41,74 @@ const Header = () => {
         setShowMenu(false)
     };
 
-const logoutUser = async () => {
-    await dispatch(logout());
-    await dispatch(RESET_AUTH());
-    navigate("/login");
-
-};
+    const logoutUser = async () => {
+        await dispatch(logout());
+        await dispatch(RESET_AUTH());
+        navigate("/login");
+    };
 
     const cart = (
         <span className={styles.cart}>
             <Link to="/cart">
                 Giỏ hàng
-                <FaShoppingCart size={20}/>
+                <FaShoppingCart size={20} />
                 <p>0</p>
             </Link>
         </span>
     )
-  return (
-    <header className={scrollPage ? `${styles.fixed}` : null}> 
-        <div className={styles.header}>
-            {logo}
-            <nav className={showMenu ? `${styles["show-nav"]}` : `${styles["hide-nav"]}`}>
-                <div className={showMenu ? `${styles["nav-wrapper"]} ${styles["show-nav-wrapper"]}` : `${styles["hide-menu"]}`} onClick={hideMenu}>
+    return (
+        <header className={scrollPage ? `${styles.fixed}` : null}>
+            <div className={styles.header}>
+                {logo}
+                <nav className={showMenu ? `${styles["show-nav"]}` : `${styles["hide-nav"]}`}>
+                    <div className={showMenu ? `${styles["nav-wrapper"]} ${styles["show-nav-wrapper"]}` : `${styles["hide-menu"]}`} onClick={hideMenu}>
 
-                </div>
-                <ul>
-                    <li className={styles["logo-mobile"]}>
-                        {logo}
-                        <FaTimes size={22} color='#fff' onClick={hideMenu}/>
-                    </li>
-                    <li>
-                        <NavLink to="/shop" className={activeLink} >
-                            Cửa hàng
-                        </NavLink>
-                    </li>
-                </ul>
+                    </div>
+                    <ul>
+                        <li className={styles["logo-mobile"]}>
+                            {logo}
+                            <FaTimes size={22} color='#fff' onClick={hideMenu} />
+                        </li>
+                        <li>
+                            <NavLink to="/shop" className={activeLink} >
+                                Cửa hàng
+                            </NavLink>
+                        </li>
+                    </ul>
 
-                <div className={styles["header-right"]}>
-                    <span className={styles.links}>
-                    <ShowOnLogout>
-                        <NavLink to={"login"} className={activeLink}>
-                            Đăng nhập
-                        </NavLink>
-                        </ShowOnLogout>
-                        <ShowOnLogout>
-                        <NavLink to={"register"} className={activeLink}>
-                            Đăng ký
-                        </NavLink>
-                        </ShowOnLogout>
-                        <ShowOnLogin>
-                        <NavLink to={"order-history"} className={activeLink}>
-                            Đơn hàng
-                        </NavLink>
-                        </ShowOnLogin>
-                        <ShowOnLogin>
-                        <Link to={"/"} onClick={logoutUser}>
-                            Đăng xuất
-                        </Link>
-                        </ShowOnLogin>
-                    </span>
+                    <div className={styles["header-right"]}>
+                        <span className={styles.links}>
+                            <ShowOnLogout>
+                                <NavLink to={"login"} className={activeLink}>
+                                    Đăng nhập
+                                </NavLink>
+                            </ShowOnLogout>
+                            <ShowOnLogout>
+                                <NavLink to={"register"} className={activeLink}>
+                                    Đăng ký
+                                </NavLink>
+                            </ShowOnLogout>
+                            <ShowOnLogin>
+                                <NavLink to={"order-history"} className={activeLink}>
+                                    Đơn hàng
+                                </NavLink>
+                            </ShowOnLogin>
+                            <ShowOnLogin>
+                                <Link to={"/"} onClick={logoutUser}>
+                                    Đăng xuất
+                                </Link>
+                            </ShowOnLogin>
+                        </span>
+                        {cart}
+                    </div>
+                </nav>
+                <div className={styles["menu-icon"]}>
                     {cart}
+                    <HiOutlineMenuAlt3 size={28} onClick={toggleMenu} />
                 </div>
-            </nav>
-            <div className={styles["menu-icon"]}>
-                {cart}
-                <HiOutlineMenuAlt3 size={28} onClick={toggleMenu}/>
             </div>
-        </div>
-    </header>
-  )
+        </header>
+    )
 }
 
 export default Header
