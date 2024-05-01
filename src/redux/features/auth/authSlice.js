@@ -166,8 +166,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isLoggedIn = action.payload;
-        console.log(action.payload);
-        if (action.payload.message === "Invalid signature") {
+        if (action.payload.message === "invalid signature") {
           state.isLoggedIn = false;
         }
       })
