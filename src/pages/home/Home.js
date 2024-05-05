@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "../../components/slider/Slider";
 import "./Home.scss";
 import HomeInfoBox from "./HomeInfoBox";
@@ -7,6 +7,10 @@ import ProductCarousel from "../../components/carousel/Carousel";
 import CarouselItem from "../../components/carousel/CarouselItem";
 import ProductCategory from "./ProductCategory";
 import FooterLinks from "../../components/footer/FooterLinks";
+import { useDispatch, useSelector } from 'react-redux';
+import { getAll } from '../../redux/features/product/productSlice';
+import Loader from "../../components/loader/Loader";
+
 
 const PageHeading = ({ heading, btnText }) => {
   return (
@@ -22,6 +26,15 @@ const PageHeading = ({ heading, btnText }) => {
   )
 };
 const Home = () => {
+  const dispatch = useDispatch();
+  const { products, isLoading, isSuccess } = useSelector((state) => state.product);
+
+  useEffect(() => {
+    if (products && products.length === 0)
+      dispatch(getAll());
+  }, [dispatch]);
+
+
   const newProducts = newProductData.map((item) => (
     <div key={item.id}>
       <CarouselItem
@@ -33,11 +46,11 @@ const Home = () => {
     </div>
   ))
 
-  const hotProducts = hotProductData.map((item) => (
-    <div key={item.id}>
+  const hotProducts = products.map((item) => (
+    <div key={item._id}>
       <CarouselItem
         name={item.name}
-        url={item.imageurl}
+        url={item.image[0]}
         price={item.price}
         description={item.description}
       />
@@ -46,6 +59,7 @@ const Home = () => {
 
   return (
     <>
+      {isLoading && <Loader />}
       <Slider />
       <section>
         <div className="container">
