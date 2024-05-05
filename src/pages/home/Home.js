@@ -2,15 +2,13 @@ import React, { useEffect } from "react";
 import Slider from "../../components/slider/Slider";
 import "./Home.scss";
 import HomeInfoBox from "./HomeInfoBox";
-import { newProductData, hotProductData } from "../../components/carousel/data";
 import ProductCarousel from "../../components/carousel/Carousel";
 import CarouselItem from "../../components/carousel/CarouselItem";
 import ProductCategory from "./ProductCategory";
 import FooterLinks from "../../components/footer/FooterLinks";
 import { useDispatch, useSelector } from 'react-redux';
-import { getAll } from '../../redux/features/product/productSlice';
-import Loader from "../../components/loader/Loader";
-
+import { getProducts } from "../../redux/features/product/productSlice";
+import { motion } from "framer-motion";
 
 const PageHeading = ({ heading, btnText }) => {
   return (
@@ -27,47 +25,43 @@ const PageHeading = ({ heading, btnText }) => {
 };
 const Home = () => {
   const dispatch = useDispatch();
-  const { products, isLoading, isSuccess } = useSelector((state) => state.product);
-
   useEffect(() => {
-    if (products && products.length === 0)
-      dispatch(getAll());
+    dispatch(getProducts());
   }, [dispatch]);
+  const { products } = useSelector((state) => state.product);
 
+  const latest = products
+    ?.filter((item, index) => {
+      return item.quantity > 0;
+    })
+    ?.filter((item, index) => index < 6);
 
-  const newProducts = newProductData.map((item) => (
-    <div key={item.id}>
-      <CarouselItem
-        name={item.name}
-        url={item.imageurl}
-        price={item.price}
-        description={item.description}
-      />
-    </div>
-  ))
-
-  const hotProducts = products.map((item) => (
+  const latestProducts = latest.map((item) => (
     <div key={item._id}>
       <CarouselItem
         name={item.name}
         url={item.image[0]}
         price={item.price}
+        regularPrice={item.regularPrice}
         description={item.description}
+        product={item}
       />
     </div>
-  ))
+  ));
 
   return (
-    <>
-      {isLoading && <Loader />}
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{ x: window.innerWidth }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+    >
       <Slider />
       <section>
         <div className="container">
           <HomeInfoBox />
           <PageHeading heading={"Sản phẩm mới"} btnText={"Mua ngay>>>"} />
-          <ProductCarousel products={newProducts} />
-          <PageHeading heading={"Sản phẩm nổi bật"} btnText={"Mua ngay>>>"} />
-          <ProductCarousel products={hotProducts} />
+          <ProductCarousel products={latestProducts} />
         </div>
       </section>
       <section className="--bg-grey">
@@ -76,8 +70,14 @@ const Home = () => {
           <ProductCategory />
         </div>
       </section>
+      <section>
+        <div className="container">
+          <PageHeading heading={"Sản phẩm hot"} btnText={"Mua ngay>>>"} />
+          <ProductCarousel products={latestProducts} />
+        </div>
+      </section>
       <FooterLinks />
-    </>
+    </motion.div>
   );
 };
 
