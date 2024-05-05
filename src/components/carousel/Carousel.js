@@ -16,7 +16,7 @@ const ProductCarousel = ({ products }) => {
                 transitionDuration={1000}
             >
                 {products}
-                </Carousel>
+            </Carousel>
         </div>
     )
 }
