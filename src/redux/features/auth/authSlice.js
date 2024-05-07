@@ -244,7 +244,7 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.isLoggedIn = true;
         state.user = action.payload;
-        toast.success("Registration Successful");
+        toast.success("Đăng ký thành công");
         // console.log(action.payload);
       })
       .addCase(register.rejected, (state, action) => {
@@ -263,7 +263,7 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.isLoggedIn = true;
         state.user = action.payload;
-        toast.success("Login Successful");
+        toast.success("Đăng nhập thành công");
         // console.log(action.payload);
       })
       .addCase(login.rejected, (state, action) => {
@@ -289,7 +289,6 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-        // toast.error(action.payload);
       })
 
       // Get Login Status
@@ -321,7 +320,6 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.isLoggedIn = true;
         state.user = action.payload;
-        // console.log(action.payload);
       })
       .addCase(getUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -339,7 +337,7 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.isLoggedIn = true;
         state.user = action.payload;
-        toast.success("User Updated");
+        toast.success("Cập nhật thông tin thành công");
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -356,7 +354,7 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.isLoggedIn = true;
         state.user = action.payload;
-        toast.success("User Photo Updated");
+        toast.success("Cập nhật ảnh đại diện thành công");
       })
       .addCase(updatePhoto.rejected, (state, action) => {
         state.isLoading = false;

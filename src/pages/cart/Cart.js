@@ -97,13 +97,13 @@ const Cart = () => {
     <section>
       <div className={`container ${styles.table}`}>
         {/* <pre>{JSON.stringify(cartItems, null, 2)}</pre> */}
-        <h2>Shopping Cart</h2>
+        <h2>Giỏ hàng</h2>
         {cartItems?.length === 0 ? (
           <>
-            <p>Your cart is currently empty.</p>
+            <p>Giỏ hàng của bạn đang trống.</p>
             <br />
             <div>
-              <Link to="/shop">&larr; Continue shopping</Link>
+              <Link to="/shop">&larr; Tiếp tục mua hàng</Link>
             </div>
           </>
         ) : (
@@ -111,12 +111,12 @@ const Cart = () => {
             <table>
               <thead>
                 <tr>
-                  <th>s/n</th>
-                  <th>Product</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Total</th>
-                  <th>Action</th>
+                  <th>STT</th>
+                  <th>Sản phẩm</th>
+                  <th>Giá</th>
+                  <th>Số lượng</th>
+                  <th>Tổng tiền</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -170,50 +170,50 @@ const Cart = () => {
             </table>
             <div className={styles.summary}>
               <button className="--btn --btn-danger" onClick={clearCart}>
-                Clear Cart
+                Xóa tất cả sản phẩm
               </button>
               <div className={styles.checkout}>
                 <div>
-                  <Link to="/shop">&larr; Continue shopping</Link>
+                  <Link to="/shop">&larr; Tiếp tục mua hàng</Link>
                 </div>
                 <br />
                 <Card cardClass={styles.card}>
                   <p>
-                    <b> {`Cart item(s): ${cartTotalQuantity}`}</b>
+                    <b> {`Số sản phẩm: ${cartTotalQuantity}`}</b>
                   </p>
                   <div className={styles.text}>
-                    <h4>Subtotal:</h4>
-                    <h3>{`$${cartTotalAmount?.toFixed(2)}`}</h3>
+                    <h4>Tổng phụ:</h4>
+                    <h3>{`${cartTotalAmount}₫`}</h3>
                   </div>
                   <VerifyCoupon />
                   <div className="--underline --mb"></div>
-                  <p>Please choose a payment method</p>
+                  <p>Vui lòng chọn phương thức thanh toán</p>
                   <form className="--form-control" onSubmit={setPayment}>
-                    <label htmlFor={"stripe"} className="radio-label">
+                    <label htmlFor={"ttsau"} className="radio-label">
                       <input
                         className="radio-input"
                         type="radio"
                         name={"paymentMethod"}
-                        id={"stripe"}
-                        value={"stripe"}
+                        id={"ttsau"}
+                        value={"ttsau"}
                         onChange={(e) => setPaymentMethod(e.target.value)}
                       />
                       <span className="custom-radio" />
-                      Stripe
+                      Thanh toán khi nhận hàng
                     </label>
-                    <label htmlFor={"flutterwave"} className="radio-label">
+                    <label htmlFor={"vnpay"} className="radio-label">
                       <input
                         className="radio-input"
                         type="radio"
                         name={"paymentMethod"}
-                        id={"flutterwave"}
-                        value={"flutterwave"}
+                        id={"vnpay"}
+                        value={"vnpay"}
                         onChange={(e) => setPaymentMethod(e.target.value)}
                       />
                       <span className="custom-radio" />
-                      Flutterwave
+                      Thanh toán qua Vnpay
                     </label>
-                    <label htmlFor={"paypal"} className="radio-label">
+                    {/* <label htmlFor={"paypal"} className="radio-label">
                       <input
                         className="radio-input"
                         type="radio"
@@ -236,15 +236,14 @@ const Cart = () => {
                       />
                       <span className="custom-radio" />
                       Wallet
-                    </label>
+                    </label> */}
                     <button
                       type="submit"
                       className="--btn --btn-primary --btn-block"
                     >
-                      Checkout
+                      Thanh toán
                     </button>
                   </form>
-                  <p>Tax an shipping calculated at checkout</p>
                 </Card>
               </div>
             </div>

@@ -82,9 +82,9 @@ const ProductDetails = () => {
   return (
     <section>
       <div className={`container ${styles.product}`}>
-        <h2>Product Details</h2>
+        <h2>Chi tiết sản phẩm</h2>
         <div>
-          <Link to="/shop">&larr; Back To Products</Link>
+          <Link to="/shop">&larr; Quay về trang sản phẩm</Link>
         </div>
         {isLoading ? (
           <Spinner />
@@ -121,43 +121,25 @@ const ProductDetails = () => {
                 <div className="--underline"></div>
                 <div className={styles.property}>
                   <p>
-                    <b>Price:</b>
+                    <b>Giá tiền:</b>
                   </p>
-                  <p className={styles.price}>{`$${product?.price}`}</p>
+                  <p className={styles.price}>{`${product?.price}₫`}</p>
                 </div>
                 <div className={styles.property}>
                   <p>
-                    <b>SKU:</b>
-                  </p>
-                  <p>{product?.sku}</p>
-                </div>
-                <div className={styles.property}>
-                  <p>
-                    <b>Category: </b>
+                    <b>Loại: </b>
                   </p>
                   <p>{product?.category}</p>
                 </div>
                 <div className={styles.property}>
                   <p>
-                    <b>Brand: </b>
-                  </p>
-                  <p>{product?.brand}</p>
-                </div>
-                <div className={styles.property}>
-                  <p>
-                    <b>Color: </b>
-                  </p>
-                  <p>{product?.color}</p>
-                </div>
-                <div className={styles.property}>
-                  <p>
-                    <b>Quantity in stock: </b>
+                    <b>Số lượng trong kho: </b>
                   </p>
                   <p>{product?.quantity}</p>
                 </div>
                 <div className={styles.property}>
                   <p>
-                    <b>Sold: </b>
+                    <b>Đã bán: </b>
                   </p>
                   <p>{product?.sold}</p>
                 </div>
@@ -189,7 +171,7 @@ const ProductDetails = () => {
                       className="--btn --btn-primary"
                       onClick={() => addToCart(product)}
                     >
-                      ADD TO CART
+                      THÊM VÀO GIỎ HÀNG
                     </button>
                   ) : (
                     <button
@@ -198,19 +180,19 @@ const ProductDetails = () => {
                         toast.error("Sorry, Product is out of stock")
                       }
                     >
-                      Out Of Stock
+                      HẾT HÀNG
                     </button>
                   )}
                   <button
                     className="--btn --btn-danger"
                     onClick={() => addWishlist(product)}
                   >
-                    ADD TO WISHLIST
+                    THÊM VÀO MUA SAU
                   </button>
                 </div>
                 <div className="--underline"></div>
                 <p>
-                  <b>Product Description:</b>
+                  <b>MÔ TẢ SẢN PHẨM:</b>
                 </p>
                 <div
                   dangerouslySetInnerHTML={{
@@ -223,7 +205,7 @@ const ProductDetails = () => {
           </>
         )}
         <Card cardClass={styles.card}>
-          <h3>Product Reviews</h3>
+          <h3>Đánh giá sản phẩm</h3>
           <ProductRating
             averageRating={averageRating}
             noOfRatings={product?.ratings.length}
@@ -236,7 +218,7 @@ const ProductDetails = () => {
 
             <div className="--m">
               {product?.ratings.length === 0 ? (
-                <p>There are no reviews for this product yet.</p>
+                <p>Không có đánh giá cho sản phẩm này.</p>
               ) : (
                 <>
                   {product?.ratings.map((item, index) => {

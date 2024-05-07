@@ -53,7 +53,7 @@ const filterSlice = createSlice({
     FILTER_BY_CATEGORY(state, action) {
       const { products, category } = action.payload;
       let tempProducts = [];
-      if (category === "All") {
+      if (category === "Tất cả") {
         tempProducts = products;
       } else {
         tempProducts = products.filter(

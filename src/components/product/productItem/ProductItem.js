@@ -51,8 +51,8 @@ const ProductItem = ({
       <div className={styles.content}>
         <div className={styles.details}>
           <p>
-            <span>{regularPrice > 0 && <del>${regularPrice}</del>}</span>
-            {` $${price} `}
+            <span>{regularPrice > 0 && <del>{regularPrice}₫</del>}</span>
+            {` ${price}₫ `}
           </p>
           {/* Rating */}
           <ProductRating
@@ -77,14 +77,14 @@ const ProductItem = ({
             className="--btn --btn-primary"
             onClick={() => addToCart(product)}
           >
-            Add To Cart
+            Thêm Vào Giỏ Hàng
           </button>
         ) : (
           <button
             className="--btn --btn-red"
-            onClick={() => toast.error("Sorry, Product is out of stock")}
+            onClick={() => toast.error("Xin lỗi, sản phẩm đã hết hàng!")}
           >
-            Out Of Stock
+            Hết Hàng
           </button>
         )}
       </div>

@@ -27,34 +27,34 @@ const CheckoutSummary = () => {
 
   return (
     <div>
-      <h3>Checkout Summary</h3>
+      <h3>Tóm tắt thanh toán</h3>
       {/* <pre>{JSON.stringify(cartItems, null, 2)}</pre> */}
       <div>
         {cartItems.lenght === 0 ? (
           <>
-            <p>No item in your cart.</p>
+            <p>Không có sản phẩm trong giỏ hàng của bạn.</p>
             <button className="--btn">
-              <Link to="/#products">Back To Shop</Link>
+              <Link to="/#products">Quay về trang sản phẩm</Link>
             </button>
           </>
         ) : (
           <div>
             <p>
-              <b>{`Cart item(s): ${cartTotalQuantity}`}</b>
+              <b>{`Số sản phẩm: ${cartTotalQuantity}`}</b>
             </p>
             <div className={styles.text}>
-              <h4>Subtotal:</h4>
-              <h3>{cartTotalAmount.toFixed(2)}</h3>
+              <h4>Tổng phụ:</h4>
+              <h3>{Math.round(cartTotalAmount)}</h3>
             </div>
             <CartDiscount />
             {cartItems.map((item, index) => {
               const { _id, name, price, cartQuantity } = item;
               return (
                 <Card key={_id} cardClass={styles.card}>
-                  <h4>Product: {name}</h4>
-                  <p>Quantity: {cartQuantity}</p>
-                  <p>Unit price: {price}</p>
-                  <p>Set price: {price * cartQuantity}</p>
+                  <h4>Sản phẩm: {name}</h4>
+                  <p>Số lượng: {cartQuantity}</p>
+                  <p>Đơn giá: {price}</p>
+                  <p>Tổng tiền: {price * cartQuantity}</p>
                 </Card>
               );
             })}

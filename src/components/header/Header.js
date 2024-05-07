@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './Header.module.scss'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
-import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
+import { FaShoppingCart, FaUserCircle, FaTimes } from "react-icons/fa";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import { FaTimes } from "react-icons/fa";
-import { useDispatch } from 'react-redux';
 import { RESET_AUTH, logout } from '../../redux/features/auth/authSlice';
 import ShowOnLogin, { ShowOnLogout } from '../hiddenLink/hiddenLink';
 import { UserName } from '../../pages/profile/Profile';
+import { useDispatch, useSelector } from "react-redux";
+import { AdminOnlyLink } from "../adminOnlyRoute/AdminOnlyRoute";
+import {
+    CALCULATE_TOTAL_QUANTITY,
+    selectCartTotalQuantity,
+} from "../../redux/features/product/cartSlice";
 
 export const logo = (
     <div className={styles.logo}>
@@ -27,6 +31,13 @@ const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const cartTotalQuantity = useSelector(selectCartTotalQuantity);
+
+    useEffect(() => {
+        dispatch(CALCULATE_TOTAL_QUANTITY());
+    }, [dispatch]);
+
+
     const fixNavbar = () => {
         if (window.scrollY > 50) {
             setScrollPage(true);
@@ -45,7 +56,9 @@ const Header = () => {
     const logoutUser = async () => {
         await dispatch(logout());
         await dispatch(RESET_AUTH());
+        localStorage.setItem("cartItems", JSON.stringify([]));
         navigate("/login");
+        window.location.reload();
     };
 
     const cart = (
@@ -53,7 +66,7 @@ const Header = () => {
             <Link to="/cart">
                 Giỏ hàng
                 <FaShoppingCart size={20} />
-                <p>0</p>
+                <p>{cartTotalQuantity}</p>
             </Link>
         </span>
     )
@@ -74,6 +87,13 @@ const Header = () => {
                             <NavLink to="/shop" className={activeLink} >
                                 Cửa hàng
                             </NavLink>
+                        </li>
+                        <li>
+                            <AdminOnlyLink>
+                                <NavLink to="/admin/home" className={activeLink}>
+                                    | &nbsp; Admin
+                                </NavLink>
+                            </AdminOnlyLink>
                         </li>
                     </ul>
 

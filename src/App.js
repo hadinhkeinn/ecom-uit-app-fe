@@ -76,8 +76,8 @@ function App() {
             }
           />
 
-          <Route path="/shop" element={<Product />} />
           <Route path="/product-details/:id" element={<ProductDetails />} />
+          <Route path="/shop" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
 
           <Route path="/checkout-details" element={<CheckoutDetails />} />

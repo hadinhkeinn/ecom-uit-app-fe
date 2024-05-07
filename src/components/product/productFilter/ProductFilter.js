@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./ProductFilter.module.scss";
 import {
-  FILTER_BY_BRAND,
   FILTER_BY_CATEGORY,
   FILTER_BY_PRICE,
 } from "../../../redux/features/product/filterSlice";
@@ -14,34 +13,22 @@ const ProductFilter = () => {
   const { products, minPrice, maxPrice } = useSelector(
     (state) => state.product
   );
-  // console.log(minPrice, maxPrice);
   const [category, setCategory] = useState("All");
-  const [brand, setBrand] = useState("All");
-  const [price, setPrice] = useState([50, 1500]);
+  const [price, setPrice] = useState([10000, 100000]);
 
   const dispatch = useDispatch();
 
   const allCategories = [
-    "All",
+    "Tất cả",
     ...new Set(products?.map((product) => product.category)),
   ];
-  const allBrands = [
-    "All",
-    ...new Set(products.map((product) => product.brand)),
-  ];
-  // console.log(allBrands);
 
   useEffect(() => {
     dispatch(GET_PRICE_RANGE({ products }));
   }, [dispatch, products]);
 
   useEffect(() => {
-    dispatch(FILTER_BY_BRAND({ products, brand }));
-  }, [dispatch, products, brand]);
-
-  useEffect(() => {
     dispatch(FILTER_BY_PRICE({ products, price }));
-    // console.log(price);
   }, [dispatch, products, price]);
 
   const filterProducts = (cat) => {
@@ -50,14 +37,13 @@ const ProductFilter = () => {
   };
 
   const clearFilters = () => {
-    setCategory("All");
-    setBrand("All");
+    setCategory("Tất cả");
     setPrice([minPrice, maxPrice]);
   };
 
   return (
     <div className={styles.filter}>
-      <h4>Categories</h4>
+      <h4>Loại</h4>
       <div className={styles.category}>
         {allCategories.map((cat, index) => {
           return (
@@ -72,26 +58,16 @@ const ProductFilter = () => {
           );
         })}
       </div>
-      <h4>Brand</h4>
-      <div className={styles.brand}>
-        <select value={brand} onChange={(e) => setBrand(e.target.value)}>
-          {allBrands.map((brand, index) => {
-            return (
-              <option key={index} value={brand}>
-                {brand}
-              </option>
-            );
-          })}
-        </select>
-        <h4>Price</h4>
-        {/* <Range /> */}
 
+      <div className={styles.brand}>
+        <h4>Giá</h4>
         <div className={styles.price}>
           <Slider
             range
+            step={1000}
             marks={{
-              1: `${price[0]}`,
-              1000: `${price[1]}`,
+              10000: `${price[0]}`,
+              200000: `${price[1]}`,
             }}
             min={minPrice}
             max={maxPrice}
@@ -108,7 +84,7 @@ const ProductFilter = () => {
         <br />
         <br />
         <button className="--btn --btn-danger" onClick={clearFilters}>
-          Clear Filter
+          Xóa bộ lọc
         </button>
       </div>
     </div>

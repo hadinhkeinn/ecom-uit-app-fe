@@ -16,8 +16,8 @@ export const CartDiscount = () => {
       {coupon != null && (
         <Card cardClass={"coupon-msg"}>
           <p className="--center-all">
-            Initial Total: ${fixedCartTotalAmount} | Coupon: {coupon.name} |
-            Discount: {coupon.discount}%
+            Tổng tiền ban đầu: ${fixedCartTotalAmount} | Phiếu giảm giá: {coupon.name} |
+            Chiết khấu: {coupon.discount}%
           </p>
         </Card>
       )}
@@ -48,17 +48,17 @@ const VerifyCoupon = () => {
     <>
       <CartDiscount />
       <div className="--flex-between">
-        <p>Have a coupon?</p>
+        <p>Bạn có phiếu giảm giá?</p>
         {coupon === null ? (
           <p
             className="--cursor --color-primary"
             onClick={() => setShowForm(true)}
           >
-            <b>Add Coupon</b>
+            <b>Thêm</b>
           </p>
         ) : (
           <p className="--cursor --color-danger" onClick={removeCoupon}>
-            <b>Remove Coupon</b>
+            <b>Xóa phiếu giảm giá</b>
           </p>
         )}
       </div>
@@ -66,14 +66,14 @@ const VerifyCoupon = () => {
         <form onSubmit={verifyCoupon} className={"coupon-form"}>
           <input
             type="text"
-            placeholder="Coupon name"
+            placeholder="Phiếu giảm giá"
             name="name"
             value={couponName}
             onChange={(e) => setCouponName(e.target.value.toUpperCase())}
             required
           />
           <button type="submit" className="--btn --btn-primary">
-            Verify
+            Xác nhận
           </button>
         </form>
       )}
