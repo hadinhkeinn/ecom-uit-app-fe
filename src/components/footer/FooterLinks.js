@@ -1,7 +1,7 @@
 import React from 'react'
 import "./FooterLinks.scss"
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa"
-import logoImg from "../../assets/shopito_logo.png" 
+// import logoImg from "../../assets/shopito_logo.png" 
 import { Link } from 'react-router-dom'
 
 export const logo = (
@@ -30,7 +30,7 @@ const FooterLinks = () => {
     <section className='footer-section'>
         <div className='container footer'>
             <div className='footer-logo'>
-                <img src={logoImg} alt="logo" />
+                {/* <img src={logoImg} alt="logo" /> */}
             </div>
             <div className='footer-menu'>
                 <p className='link-heading'>
