@@ -10,7 +10,6 @@ import {
   selectCartItems,
 } from "../../../redux/features/product/cartSlice";
 import Card from "../../card/Card";
-// import StarsRating from "react-star-rate";
 import { Spinner } from "../../loader/Loader";
 import { getProduct } from "../../../redux/features/product/productSlice";
 import DOMPurify from "dompurify";
@@ -177,7 +176,7 @@ const ProductDetails = () => {
                     <button
                       className="--btn --btn-red"
                       onClick={() =>
-                        toast.error("Sorry, Product is out of stock")
+                        toast.error("Xin lỗi, sản phẩm này đã hết hàng.")
                       }
                     >
                       HẾT HÀNG
@@ -230,7 +229,7 @@ const ProductDetails = () => {
                           starDimension="20px"
                           starSpacing="2px"
                           starRatedColor="#F6B01E"
-                          rating={star}
+                          rating={parseFloat(star)}
                           editing={false}
                         />
                         <p>{review}</p>
@@ -239,7 +238,7 @@ const ProductDetails = () => {
                         </span>
                         <br />
                         <span>
-                          <b>by: {name}</b>
+                          <b>Tạo bởi: {name}</b>
                         </span>
                       </div>
                     );

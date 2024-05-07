@@ -97,11 +97,11 @@ const ProductList = ({ products }) => {
       </div>
       <ReactPaginate
         breakLabel="..."
-        nextLabel="Trước"
+        nextLabel="Kế tiếp"
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
         pageCount={pageCount}
-        previousLabel="Sau"
+        previousLabel="Trước"
         renderOnZeroPageCount={null}
         containerClassName="pagination"
         pageLinkClassName="page-num"

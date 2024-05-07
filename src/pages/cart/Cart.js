@@ -155,7 +155,7 @@ const Cart = () => {
                           </button>
                         </div>
                       </td>
-                      <td>{(price * cartQuantity).toFixed(2)}</td>
+                      <td>{(price * cartQuantity)}</td>
                       <td className={styles.icons}>
                         <FaTrashAlt
                           size={19}

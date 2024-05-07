@@ -37,7 +37,7 @@ export function calculateAverageRating(ratings) {
     }
   }
 
-  return totalStars / ratings.length;
+  return parseFloat(totalStars / ratings.length);
 }
 
 export function getCartQuantityById(products, id) {
