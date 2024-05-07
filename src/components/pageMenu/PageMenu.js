@@ -9,7 +9,7 @@ const PageMenu = () => {
             <nav className="--bg-primary --p --mb">
                 <ul className="home-links">
                     <li>
-                        <NavLink to="/profile">Hồ sơ</NavLink>
+                        <NavLink to="/profile">Trang cá nhân</NavLink>
                     </li>
                     <li>
                         <NavLink to="/wallet">Ví</NavLink>

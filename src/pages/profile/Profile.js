@@ -122,7 +122,7 @@ const Profile = () => {
                 {isLoading && <Loader />}
                 <div className="container">
                     <PageMenu />
-                    <h2>Profile</h2>
+                    <h2>Trang cá nhân</h2>
                     <div className="--flex-start profile">
                         <Card cardClass={"card"}>
                             {!isLoading && (
