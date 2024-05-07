@@ -13,7 +13,7 @@ const ProductFilter = () => {
   const { products, minPrice, maxPrice } = useSelector(
     (state) => state.product
   );
-  const [category, setCategory] = useState("All");
+  const [category, setCategory] = useState("Tất cả");
   const [price, setPrice] = useState([10000, 100000]);
 
   const dispatch = useDispatch();
