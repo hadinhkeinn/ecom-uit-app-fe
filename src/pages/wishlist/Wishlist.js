@@ -7,10 +7,16 @@ import {
   removeFromWishlist,
 } from "../../redux/features/auth/authSlice";
 import ProductItem from "../../components/product/productItem/ProductItem";
+import Loader from "../../components/loader/Loader";
 
 const Wishlist = () => {
   const [grid, setGrid] = useState(true);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getWishlist());
+  }, [dispatch]);
+
   const { wishlist, isLoading } = useSelector((state) => state.auth);
 
   const removeWishlist = async (product) => {
@@ -20,23 +26,21 @@ const Wishlist = () => {
     await dispatch(getWishlist());
   };
 
-  useEffect(() => {
-    dispatch(getWishlist());
-  }, [dispatch]);
+
   console.log(wishlist);
-  console.log(wishlist.length);
+  // console.log(wishlist.length);
 
   return (
     <>
       <section>
-        {/* {isLoading && <Loader />} */}
+        {isLoading && <Loader />}
         <div className="container">
           <PageMenu />
-          <h2>My Wishlist</h2>
+          <h2>Danh sách mua sau của tôi</h2>
           <div className="--underline"></div>
           <div className={grid ? `${styles.grid}` : `${styles.list}`}>
             {wishlist.length === 0 ? (
-              <p>No product found in your wishlist...</p>
+              <p>Không tìm thấy sản phẩm trong danh sách mua sau của bạn</p>
             ) : (
               <>
                 {wishlist.map((product) => {
@@ -47,7 +51,7 @@ const Wishlist = () => {
                         className="--btn --btn-primary --btn-block"
                         onClick={() => removeWishlist(product)}
                       >
-                        Romove From Wishlist
+                        Xóa khỏi danh sách mua sau
                       </button>
                     </div>
                   );
