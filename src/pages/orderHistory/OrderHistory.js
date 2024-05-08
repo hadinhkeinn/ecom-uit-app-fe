@@ -27,25 +27,25 @@ const OrderHistory = () => {
   return (
     <section>
       <div className={`container order`}>
-        <h2>Your Order History</h2>
+        <h2>Lịch sử đặt hàng của bạn</h2>
         <p>
-          Open an order to leave a <b>Product Review</b>
+          Mở đơn hàng để <b>đánh giá sản phẩm</b>
         </p>
         <br />
         <>
           {isLoading && <Loader />}
           <div className={"table"}>
             {orders.length === 0 ? (
-              <p>No order found</p>
+              <p>Không tìm thấy đơn hàng nào</p>
             ) : (
               <table>
                 <thead>
                   <tr>
-                    <th>s/n</th>
-                    <th>Date</th>
-                    <th>Order ID</th>
-                    <th>Order Amount</th>
-                    <th>Order Status</th>
+                    <th>STT</th>
+                    <th>Ngày đặt</th>
+                    <th>Mã đơn</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái đơn hàng</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -61,12 +61,11 @@ const OrderHistory = () => {
                       <tr key={_id} onClick={() => handleClick(_id)}>
                         <td>{index + 1}</td>
                         <td>
-                          {orderDate} at {orderTime}
+                          {orderDate} vào lúc {orderTime}
                         </td>
                         <td>{_id}</td>
                         <td>
-                          {"$"}
-                          {orderAmount}
+                          {orderAmount}₫
                         </td>
                         <td>
                           <p
