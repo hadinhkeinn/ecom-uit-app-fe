@@ -51,24 +51,28 @@ const Chart = () => {
     return arr.filter((n) => n === value).length;
   };
 
-  const [q1, q2, q3, q4] = [
-    "Order Placed...",
-    "Processing...",
-    "Shipped...",
-    "Delivered",
+  const [q1, q2, q3, q4, q5, q6] = [
+    "Đang chờ",
+    "Đã xác nhận",
+    "Đang vận chuyển",
+    "Đã giao hàng",
+    "Hoàn thành",
+    "Đã hủy",
   ];
 
   const placed = getOrderCount(array, q1);
   const processing = getOrderCount(array, q2);
   const shipped = getOrderCount(array, q3);
   const delivered = getOrderCount(array, q4);
+  const completed = getOrderCount(array, q5);
+  const cancelled = getOrderCount(array, q6);
 
   const data = {
-    labels: ["Đơn hàng đã đặt", "Đang xử lý", "Đang vận chuyển", "Đã giao"],
+    labels: ["Đang chờ", "Đã xác nhận", "Đang vận chuyển", "Đã giao hàng", "Hoàn thành", "Đã hủy"],
     datasets: [
       {
         label: "Số lượng đơn hàng",
-        data: [placed, processing, shipped, delivered],
+        data: [placed, processing, shipped, delivered, completed, cancelled],
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
     ],
