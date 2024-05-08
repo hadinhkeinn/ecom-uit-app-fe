@@ -97,14 +97,6 @@ const ProductForm = ({
                 </option>
               ))}
           </select>
-          <label>Product Color:</label>
-          <input
-            type="text"
-            placeholder="Color"
-            name="color"
-            value={product?.color}
-            onChange={handleInputChange}
-          />
 
           <label>Regular Price:</label>
           <input

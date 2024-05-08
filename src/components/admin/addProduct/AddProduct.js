@@ -17,7 +17,6 @@ const initialState = {
   category: "",
   quantity: "",
   price: "",
-  color: "",
   regularPrice: "",
 };
 
@@ -32,7 +31,7 @@ const AddProduct = () => {
 
   const isLoading = useSelector(selectIsLoading);
 
-  const { name, category, price, quantity, color, regularPrice } = product;
+  const { name, category, price, quantity, regularPrice } = product;
   const { categories } = useSelector((state) => state.category);
   console.log(categories);
   useEffect(() => {
@@ -61,7 +60,6 @@ const AddProduct = () => {
       name: name,
       sku: generateKSKU(category),
       category: category,
-      color: color,
       quantity: Number(quantity),
       regularPrice: regularPrice,
       price: price,
