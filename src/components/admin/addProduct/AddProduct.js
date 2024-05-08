@@ -77,7 +77,7 @@ const AddProduct = () => {
   return (
     <div>
       {isLoading && <Loader />}
-      <h3 className="--mt">Add New Product</h3>
+      <h3 className="--mt">Thêm sản phẩm mới</h3>
 
       <ProductForm
         files={files}

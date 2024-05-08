@@ -64,10 +64,10 @@ const Chart = () => {
   const delivered = getOrderCount(array, q4);
 
   const data = {
-    labels: ["Placed Orders", "Processing", "Shipped", "Delivered"],
+    labels: ["Đơn hàng đã đặt", "Đang xử lý", "Đang vận chuyển", "Đã giao"],
     datasets: [
       {
-        label: "Order count",
+        label: "Số lượng đơn hàng",
         data: [placed, processing, shipped, delivered],
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
@@ -77,7 +77,7 @@ const Chart = () => {
   return (
     <div className={styles.charts}>
       <Card cardClass={styles.card}>
-        <h3>Order Status Chart</h3>
+        <h3>Biểu đồ trạng thái đơn hàng</h3>
         <Bar options={options} data={data} />
       </Card>
     </div>

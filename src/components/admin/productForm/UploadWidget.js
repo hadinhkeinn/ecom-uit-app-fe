@@ -78,32 +78,6 @@ const UploadWidget = ({ files, setFiles }) => {
     }
   };
 
-  //   const uploadImages = async () => {
-  //     console.log(images);
-  //     let files = [];
-  //     try {
-  //       for (let i = 0; i < images.length; i++) {
-  //         let formData = new FormData();
-  //         formData.append("file", images[i]);
-  //         formData.append("upload_preset", "mqxbycre");
-
-  //         const res = await instance.post(url, formData);
-  //         console.log(res.data.url);
-  //         return res.data;
-  //         // .then((response) => {
-  //         //   console.log(response.data);
-  //         //   return response.data;
-  //         // });
-
-  //         //   .then((data) => {
-  //         //     console.log(data.secure_url);
-  //         //   });
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
   return (
     <div>
       <Card cardClass={"formcard group"}>
@@ -111,7 +85,7 @@ const UploadWidget = ({ files, setFiles }) => {
           <AiOutlineCloudUpload size={35} />
           <br />
 
-          <span>Click to upload Up to 5 images</span>
+          <span>Bấm để tải lên tối đa 5 hình ảnh</span>
           <input
             type="file"
             name="images"
@@ -124,9 +98,9 @@ const UploadWidget = ({ files, setFiles }) => {
         {selectedImages.length > 0 &&
           (selectedImages.length > 5 ? (
             <p className="error">
-              You can't upload more than 5 images! <br />
+              Bạn không thể tải lên nhiều hơn 5 hình ảnh! <br />
               <span>
-                please remove <b> {selectedImages.length - 5} </b> of them.
+                vui lòng xóa <b> {selectedImages.length - 5} </b> hình ảnh.
               </span>
             </p>
           ) : (
@@ -140,9 +114,9 @@ const UploadWidget = ({ files, setFiles }) => {
                   }}
                 >
                   {uploading
-                    ? `Uploading... ${progress} of ${selectedImages.length}`
-                    : `Upload ${selectedImages.length} Image${selectedImages.length === 1 ? "" : "s"
-                    }`}
+                    ? `Đang tải... ${progress} trong số ${selectedImages.length}`
+                    : `Tải lên ${selectedImages.length} hình ảnh`
+                  }
                 </button>
               </div>
             </>

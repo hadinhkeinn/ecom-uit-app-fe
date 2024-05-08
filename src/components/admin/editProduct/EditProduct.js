@@ -60,7 +60,6 @@ const EditProduct = () => {
     const formData = {
       name: product?.name,
       category: product?.category,
-      color: product?.color,
       quantity: Number(product?.quantity),
       regularPrice: product?.regularPrice,
       price: product?.price,
@@ -78,7 +77,7 @@ const EditProduct = () => {
   return (
     <div>
       {isLoading && <Loader />}
-      <h3 className="--mt">Edit Product</h3>
+      <h3 className="--mt">Chỉnh sửa sản phẩm</h3>
       <ProductForm
         files={files}
         setFiles={setFiles}

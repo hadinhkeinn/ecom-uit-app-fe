@@ -17,12 +17,12 @@ const CreateCoupon = () => {
   const saveCoupon = async (e) => {
     e.preventDefault();
     if (name.length < 6) {
-      return toast.error("Coupon must be up to 6 characters");
+      return toast.error("Mã giảm giá phải có tối thiểu 6 ký tự");
     }
     const formData = {
       name,
       discount,
-      expiresAt,
+      expiry: expiresAt,
     };
     // console.log(formData);
     dispatch(createCoupon(formData));
@@ -36,32 +36,32 @@ const CreateCoupon = () => {
       <div className="--underline"></div>
       <br />
       <div className="--mb2">
-        <h3>Create Coupon</h3>
+        <h3>Tạo mã giảm giá</h3>
         <p>
-          Use the form to <b>Create a Coupon.</b>
+          Dùng biểu mẫu để <b>tạo một mã giảm giá.</b>
         </p>
         <Card cardClass={"card"}>
           <br />
           <form onSubmit={saveCoupon}>
-            <label>Coupon Name:</label>
+            <label>Mã giảm giá:</label>
             <input
               type="text"
-              placeholder="Coupon name"
+              placeholder="Mã giảm giá"
               name="name"
               value={name}
               onChange={(e) => setName(e.target.value.toUpperCase())}
               required
             />
-            <label>Discount %:</label>
+            <label>Chiết khấu %:</label>
             <input
               type="text"
-              placeholder="Coupon Discount"
+              placeholder="Chiết khấu"
               name="discount"
               value={discount}
               onChange={(e) => setDiscount(e.target.value)}
               required
             />
-            <label>Expiry date:</label>
+            <label>Ngày hết hạn:</label>
             <DatePicker
               selected={expiresAt}
               value={expiresAt}
@@ -70,7 +70,7 @@ const CreateCoupon = () => {
             />
             <div className="--my">
               <button type="submit" className="--btn --btn-primary">
-                Save Coupon
+                Lưu
               </button>
             </div>
           </form>

@@ -21,9 +21,6 @@ const ProductForm = ({
   categories,
   isEditing,
 }) => {
-  const img =
-    "https://res.cloudinary.com/zinotrust/image/upload/v1674999036/nhq5gqr1xecrkipneiup.jpg";
-
   // useEffect(() => {
   //   const updateImagePreview = () => {
   //     // const imagesArray = files.map((file) => {
@@ -46,7 +43,7 @@ const ProductForm = ({
       <Card cardClass={"card"}>
         <br />
         <form onSubmit={saveProduct}>
-          <label>Product Images:</label>
+          <label>Hình ảnh sản phẩm:</label>
           <div className="slide-container">
             <aside>
               {files.length > 0 &&
@@ -63,22 +60,22 @@ const ProductForm = ({
                   </div>
                 ))}
               {files.length < 1 && (
-                <p className="--m">No image set for this poduct.</p>
+                <p className="--m">Không có hình ảnh</p>
               )}
             </aside>
           </div>
           <br />
           <hr />
-          <label>Product Name:</label>
+          <label>Tên sản phẩm:</label>
           <input
             type="text"
-            placeholder="Product name"
+            placeholder="Tên sản phẩm"
             name="name"
             value={product?.name}
             onChange={handleInputChange}
           />
 
-          <label>Product Category:</label>
+          <label>Loại sản phẩm:</label>
           <select
             name="category"
             value={product?.category}
@@ -88,7 +85,7 @@ const ProductForm = ({
             {isEditing ? (
               <option>{product?.category}</option>
             ) : (
-              <option>Select Category</option>
+              <option>Chọn loại sản phẩm</option>
             )}
             {categories.length > 0 &&
               categories.map((cat) => (
@@ -98,33 +95,33 @@ const ProductForm = ({
               ))}
           </select>
 
-          <label>Regular Price:</label>
+          <label>Giá ban đầu:</label>
           <input
             type="text"
-            placeholder="Regular Price"
+            placeholder="Giá ban đầu"
             name="regularPrice"
             value={product?.regularPrice}
             onChange={handleInputChange}
           />
-          <label>Product Price:</label>
+          <label>Giá chính thức:</label>
           <input
             type="text"
-            placeholder="Product Price"
+            placeholder="Giá chính thức"
             name="price"
             value={product?.price}
             onChange={handleInputChange}
           />
 
-          <label>Product Quantity:</label>
+          <label>Số lượng:</label>
           <input
             type="text"
-            placeholder="Product Quantity"
+            placeholder="Số lượng"
             name="quantity"
             value={product?.quantity}
             onChange={handleInputChange}
           />
 
-          <label>Product Description:</label>
+          <label>Chi tiết sản phẩm:</label>
           <ReactQuill
             theme="snow"
             value={description}
@@ -135,7 +132,7 @@ const ProductForm = ({
 
           <div className="--my">
             <button type="submit" className="--btn --btn-primary">
-              Save Product
+              Lưu sản phẩm
             </button>
           </div>
         </form>

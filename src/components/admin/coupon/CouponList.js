@@ -18,15 +18,15 @@ const CouponList = () => {
 
   const confirmDelete = (id) => {
     confirmAlert({
-      title: "Delete Coupon",
-      message: "Are you sure you want to delete this coupon.",
+      title: "Xoá mã giảm giá",
+      message: "Bạn có chắc chắn muốn xoá mã giảm giá này?",
       buttons: [
         {
-          label: "Delete",
+          label: "Xóa",
           onClick: () => delCoupon(id),
         },
         {
-          label: "Cancel",
+          label: "Hủy bỏ",
           // onClick: () => alert('Click No')
         },
       ],
@@ -40,21 +40,20 @@ const CouponList = () => {
 
   return (
     <div className="--mb2 ">
-      <h3>All Coupons</h3>
+      <h3>Tất cả mã giảm giá</h3>
 
       <div className={"table"}>
         {coupons.length === 0 ? (
-          <p>No coupon found</p>
+          <p>Không tìm thấy mã giảm giá</p>
         ) : (
           <table>
             <thead>
               <tr>
-                <th>s/n</th>
-                <th>Name</th>
-                <th>Discount (%)</th>
-                <th>Date Created</th>
-                <th>Expiry Date</th>
-                <th>Action</th>
+                <th>STT</th>
+                <th>Tên</th>
+                <th>Chiết khấu (%)</th>
+                <th>Ngày hết hạn</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -64,7 +63,7 @@ const CouponList = () => {
                   <tr key={_id}>
                     <td>{index + 1}</td>
                     <td>{name}</td>
-                    <td>{discount}% OFF</td>
+                    <td>{discount}%</td>
                     <td>{expiry.substring(0, 10)}</td>
                     <td>
                       <span>

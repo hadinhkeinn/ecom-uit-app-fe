@@ -37,17 +37,17 @@ const CreateCategory = ({ reloadCategory }) => {
       <div className="--underline"></div>
       <br />
       <div className="--mb2">
-        <h3>Create Category</h3>
+        <h3>Tạo loại sản phẩm</h3>
         <p>
-          Use the form to <b>Create a Category.</b>
+          Dùng biểu mẫu để <b>tạo loại sản phẩm mới.</b>
         </p>
         <Card cardClass={"card"}>
           <br />
           <form onSubmit={saveCat}>
-            <label>Category Name:</label>
+            <label>Tên loại sản phẩm:</label>
             <input
               type="text"
-              placeholder="Category name"
+              placeholder="Tên loại sản phẩm"
               name="title"
               value={title}
               onChange={(e) => setName(e.target.value)}
@@ -56,7 +56,7 @@ const CreateCategory = ({ reloadCategory }) => {
 
             <div className="--my">
               <button type="submit" className="--btn --btn-primary">
-                Save Category
+                Lưu
               </button>
             </div>
           </form>

@@ -43,23 +43,23 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-      <h2>Admin Home</h2>
+      <h2>Trang chủ</h2>
       <div className={styles["info-box"]}>
         <InfoBox
           cardClass={`${styles.card} ${styles.card1}`}
-          title={"Earnings"}
+          title={"Doanh thu"}
           count={`${totalOrderAmount} VND`}
           icon={earningIcon}
         />
         <InfoBox
           cardClass={`${styles.card} ${styles.card2}`}
-          title={"Products"}
+          title={"Sản phẩm"}
           count={products.length}
           icon={productIcon}
         />
         <InfoBox
           cardClass={`${styles.card} ${styles.card3}`}
-          title={"Orders"}
+          title={"Đơn đặt hàng"}
           count={orders.length}
           icon={ordersIcon}
         />

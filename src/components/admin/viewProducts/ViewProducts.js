@@ -49,15 +49,15 @@ const ViewProducts = () => {
 
   const confirmDelete = (id) => {
     confirmAlert({
-      title: "Delete Product",
-      message: "Are you sure you want to delete this product.",
+      title: "Xóa sản phẩm",
+      message: "Bạn có chắc chắn muốn xóa sản phẩm này?",
       buttons: [
         {
-          label: "Delete",
+          label: "Xóa",
           onClick: () => delProduct(id),
         },
         {
-          label: "Cancel",
+          label: "Huy bỏ",
           // onClick: () => alert('Click No')
         },
       ],
@@ -86,9 +86,9 @@ const ViewProducts = () => {
       <div className="table">
         <div className="--flex-between --flex-dir-column">
           <span>
-            <h3>All Products</h3>
+            <h3>Tất cả sản phẩm</h3>
             <p>
-              ~ <b>{filteredProducts.length} Products Found</b>
+              ~ <b>{filteredProducts.length} sản phẩm được tìm thấy</b>
             </p>
           </span>
           <span>
@@ -103,18 +103,18 @@ const ViewProducts = () => {
 
         <div className="table">
           {!isLoading && currentItems.length === 0 ? (
-            <p>-- No product found...</p>
+            <p>-- Không tìm thấy sản phẩm...</p>
           ) : (
             <table>
               <thead>
                 <tr>
-                  <th>s/n</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Value</th>
-                  <th>Action</th>
+                  <th>STT</th>
+                  <th>Tên sản phẩm</th>
+                  <th>Loại</th>
+                  <th>Giá</th>
+                  <th>Số lượng</th>
+                  <th>Tổng tiền</th>
+                  <th></th>
                 </tr>
               </thead>
 
@@ -127,13 +127,13 @@ const ViewProducts = () => {
                       <td>{shortenText(name, 16)}</td>
                       <td>{category}</td>
                       <td>
-                        {"$"}
-                        {price}
+                        {price} 
+                        {"₫"}
                       </td>
                       <td>{quantity}</td>
                       <td>
-                        {"$"}
                         {price * quantity}
+                        {"₫"}
                       </td>
                       <td className="icons">
                         <span>
@@ -163,11 +163,11 @@ const ViewProducts = () => {
         </div>
         <ReactPaginate
           breakLabel="..."
-          nextLabel="Next"
+          nextLabel="Kế tiếp"
           onPageChange={handlePageClick}
           pageRangeDisplayed={3}
           pageCount={pageCount}
-          previousLabel="Prev"
+          previousLabel="Trước"
           renderOnZeroPageCount={null}
           containerClassName="pagination"
           pageLinkClassName="page-num"

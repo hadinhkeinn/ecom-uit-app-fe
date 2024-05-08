@@ -18,15 +18,15 @@ const CategoryList = () => {
 
   const confirmDelete = (_id) => {
     confirmAlert({
-      title: "Delete Category",
-      message: "Are you sure you want to delete this category?",
+      title: "Xóa loại sản phẩm",
+      message: "Bạn có chắc chắn muốn xóa loại sản phẩm này?",
       buttons: [
         {
-          label: "Delete",
+          label: "Xóa",
           onClick: () => delCat(_id),
         },
         {
-          label: "Cancel",
+          label: "Hủy bỏ",
           // onClick: () => alert('Click No')
         },
       ],
@@ -40,18 +40,18 @@ const CategoryList = () => {
 
   return (
     <div className="--mb2 ">
-      <h3>All Categories</h3>
+      <h3>Tất cả danh mục sản phẩm</h3>
 
       <div className={"table"}>
         {categories.length === 0 ? (
-          <p>No category found</p>
+          <p>Không tìm thấy danh mục sản phẩm</p>
         ) : (
           <table>
             <thead>
               <tr>
-                <th>s/n</th>
-                <th>Name</th>
-                <th>Action</th>
+                <th>STT</th>
+                <th>Tên</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>

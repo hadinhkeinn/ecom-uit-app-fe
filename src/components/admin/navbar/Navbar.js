@@ -22,32 +22,32 @@ const Navbar = () => {
         <ul>
           <li>
             <NavLink to="/admin/home" className={activeLink}>
-              Home
+              Trang chủ
             </NavLink>
           </li>
           <li>
             <NavLink to="/admin/all-products" className={activeLink}>
-              All Products
+              Tất cả sản phẩm
             </NavLink>
           </li>
           <li>
             <NavLink to="/admin/add-product" className={activeLink}>
-              Add Product
+              Thêm sản phẩm
             </NavLink>
           </li>
           <li>
             <NavLink to="/admin/orders" className={activeLink}>
-              Orders
+              Đơn hàng
             </NavLink>
           </li>
           <li>
             <NavLink to="/admin/coupon" className={activeLink}>
-              Coupon
+              Mã giảm giá
             </NavLink>
           </li>
           <li>
             <NavLink to="/admin/category" className={activeLink}>
-              Categories
+              Loại sản phẩm
             </NavLink>
           </li>
         </ul>
