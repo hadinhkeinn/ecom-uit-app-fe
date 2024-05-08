@@ -82,10 +82,10 @@ const cartSlice = createSlice({
         // Increase the cartQuantity
         if (cartQuantity === action.payload.quantity) {
           state.cartItems[productIndex].cartQuantity += 0;
-          toast.info("Max number of product reached!!!");
+          toast.info("Đã đạt số lượng sản phẩm tối đa!!!");
         } else {
           state.cartItems[productIndex].cartQuantity += 1;
-          toast.info(`${action.payload.name} increased by one`, {
+          toast.info(`${action.payload.name} được tăng thêm 1`, {
             position: "top-left",
           });
         }
@@ -109,7 +109,7 @@ const cartSlice = createSlice({
 
       if (state.cartItems[productIndex].cartQuantity > 1) {
         state.cartItems[productIndex].cartQuantity -= 1;
-        toast.info(`${action.payload.name} giảm một sản phẩm`, {
+        toast.info(`${action.payload.name} giảm 1 sản phẩm`, {
           position: "top-left",
         });
       } else if (state.cartItems[productIndex].cartQuantity === 1) {
@@ -117,7 +117,7 @@ const cartSlice = createSlice({
           (item) => item._id !== action.payload._id
         );
         state.cartItems = newCartItem;
-        toast.success(`${action.payload.name} được xóa khỏi giỏ hàng`, {
+        toast.success(`${action.payload.name} đã được xóa khỏi giỏ hàng`, {
           position: "top-left",
         });
       }
@@ -129,7 +129,7 @@ const cartSlice = createSlice({
       );
 
       state.cartItems = newCartItem;
-      toast.success(`${action.payload.name} được xóa khỏi giỏ hàng`, {
+      toast.success(`${action.payload.name} đã được xóa khỏi giỏ hàng`, {
         position: "top-left",
       });
 
@@ -137,7 +137,7 @@ const cartSlice = createSlice({
     },
     CLEAR_CART(state, action) {
       state.cartItems = [];
-      toast.info(`Cart cleared`, {
+      toast.info(`Đã xóa giỏ hàng`, {
         position: "top-left",
       });
 

@@ -33,7 +33,7 @@ const AddProduct = () => {
 
   const { name, category, price, quantity, regularPrice } = product;
   const { categories } = useSelector((state) => state.category);
-  console.log(categories);
+  // console.log(categories);
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);

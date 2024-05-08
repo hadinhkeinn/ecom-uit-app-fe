@@ -4,6 +4,9 @@ import { AiOutlineCloudUpload } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { toast } from "react-toastify";
 
+const cloud_name = process.env.REACT_APP_CLOUD_NAME;
+const url = 'https://api.cloudinary.com/v1_1/' + cloud_name + '/image/upload';
+
 const UploadWidget = ({ files, setFiles }) => {
   // File upload start
   const [selectedImages, setSelectedImages] = useState([]);
@@ -36,8 +39,6 @@ const UploadWidget = ({ files, setFiles }) => {
   };
   // File upload end
 
-  const url = "https://api.cloudinary.com/v1_1/zinotrust/image/upload";
-
   const uploadImages = async () => {
     setUploading(true);
     console.log(images);
@@ -46,8 +47,7 @@ const UploadWidget = ({ files, setFiles }) => {
     for (let i = 0; i < images.length; i++) {
       let file = images[i];
       formData.append("file", file);
-      formData.append("upload_preset", "mqxbycre");
-      formData.append("folder", "shopito");
+      formData.append("upload_preset", "ysnmkxzm");
 
       fetch(url, {
         method: "POST",
@@ -141,9 +141,8 @@ const UploadWidget = ({ files, setFiles }) => {
                 >
                   {uploading
                     ? `Uploading... ${progress} of ${selectedImages.length}`
-                    : `Upload ${selectedImages.length} Image${
-                        selectedImages.length === 1 ? "" : "s"
-                      }`}
+                    : `Upload ${selectedImages.length} Image${selectedImages.length === 1 ? "" : "s"
+                    }`}
                 </button>
               </div>
             </>
