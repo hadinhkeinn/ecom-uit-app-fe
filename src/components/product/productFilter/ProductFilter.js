@@ -14,7 +14,7 @@ const ProductFilter = () => {
     (state) => state.product
   );
   const [category, setCategory] = useState("Tất cả");
-  const [price, setPrice] = useState([10000, 100000]);
+  const [price, setPrice] = useState([10000, 500000]);
 
   const dispatch = useDispatch();
 
@@ -67,7 +67,7 @@ const ProductFilter = () => {
             step={1000}
             marks={{
               10000: `${price[0]}`,
-              200000: `${price[1]}`,
+              500000: `${price[1]}`,
             }}
             min={minPrice}
             max={maxPrice}
