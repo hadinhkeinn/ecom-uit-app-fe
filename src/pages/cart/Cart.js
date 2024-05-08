@@ -82,7 +82,7 @@ const Cart = () => {
   const setPayment = (e) => {
     e.preventDefault();
     if (paymentMethod === "") {
-      return toast.error("Please select a payment method");
+      return toast.error("Vui lòng chọn phương thức thanh toán");
     }
     dispatch(SAVE_PAYMENT_METHOD(paymentMethod));
 

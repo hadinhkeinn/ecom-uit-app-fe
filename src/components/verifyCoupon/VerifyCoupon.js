@@ -16,7 +16,7 @@ export const CartDiscount = () => {
       {coupon != null && (
         <Card cardClass={"coupon-msg"}>
           <p className="--center-all">
-            Tổng tiền ban đầu: ${fixedCartTotalAmount} | Phiếu giảm giá: {coupon.name} |
+            Tổng tiền ban đầu: {fixedCartTotalAmount}₫ | Phiếu giảm giá: {coupon.name} |
             Chiết khấu: {coupon.discount}%
           </p>
         </Card>
