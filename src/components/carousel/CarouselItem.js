@@ -28,7 +28,7 @@ const CarouselItem = ({ url, name, price, description, product }) => {
         <p className='price'>
           {`${price}₫`}
         </p>
-        <h4 className='product--name'>{shortenText(name, 35)}</h4>
+        <h4 className='product--name'>{shortenText(name, 20)}</h4>
       </Link>
       <button className='--btn --btn-primary --btn-block' onClick={() => addToCart(product)}>
         Thêm vào giỏ hàng
