@@ -6,7 +6,6 @@ import { getCategories } from "../../../redux/features/categoryAndBrand/category
 
 const Category = () => {
   const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.category);
 
   const reloadCategory = () => {
     dispatch(getCategories());

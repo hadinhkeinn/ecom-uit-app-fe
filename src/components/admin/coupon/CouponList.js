@@ -59,14 +59,13 @@ const CouponList = () => {
             </thead>
             <tbody>
               {coupons.map((coupon, index) => {
-                const { _id, name, discount, expiresAt, createdAt } = coupon;
+                const { _id, name, discount, expiry } = coupon;
                 return (
                   <tr key={_id}>
                     <td>{index + 1}</td>
                     <td>{name}</td>
                     <td>{discount}% OFF</td>
-                    <td>{createdAt.substring(0, 10)}</td>
-                    <td>{expiresAt.substring(0, 10)}</td>
+                    <td>{expiry.substring(0, 10)}</td>
                     <td>
                       <span>
                         <FaTrashAlt

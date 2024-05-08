@@ -6,18 +6,15 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { Spinner } from "../../components/loader/Loader";
 
-const Order = () => {
+const Order = ({ userId }) => {
   const pdfRef = useRef();
-  const { id } = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { isLoading, isError, message, order } = useSelector(
-    (state) => state.order
-  );
+
+  const { isLoading, order } = useSelector((state) => state.order);
 
   useEffect(() => {
-    dispatch(getOrder(id));
-  }, [dispatch, id]);
+    dispatch(getOrder(userId));
+  }, [dispatch, userId]);
 
   const downloadPDF = () => {
     const input = pdfRef.current;
@@ -43,6 +40,8 @@ const Order = () => {
     });
   };
 
+  // const { address, province, country } = order?.orderBy?.address;
+
   return (
     <section>
       <div className="container" ref={pdfRef}>
@@ -57,9 +56,7 @@ const Order = () => {
             <Spinner />
           ) : (
             <>
-              <p>
-                <b>Ship to</b> {order?.shippingAddress?.name}
-              </p>
+              <p>{/* <b>Ship to</b> {address}, {province}, {country} */}</p>
               <p>
                 <b>Order ID</b> {order?._id}
               </p>

@@ -16,14 +16,14 @@ const CategoryList = () => {
     dispatch(getCategories());
   }, [dispatch]);
 
-  const confirmDelete = (slug) => {
+  const confirmDelete = (_id) => {
     confirmAlert({
       title: "Delete Category",
       message: "Are you sure you want to delete this category?",
       buttons: [
         {
           label: "Delete",
-          onClick: () => delCat(slug),
+          onClick: () => delCat(_id),
         },
         {
           label: "Cancel",
@@ -33,8 +33,8 @@ const CategoryList = () => {
     });
   };
 
-  const delCat = async (slug) => {
-    await dispatch(deleteCategory(slug));
+  const delCat = async (_id) => {
+    await dispatch(deleteCategory(_id));
     await dispatch(getCategories());
   };
 
@@ -56,18 +56,18 @@ const CategoryList = () => {
             </thead>
             <tbody>
               {categories.map((cat, index) => {
-                const { _id, name, slug } = cat;
+                const { _id, title } = cat;
                 return (
                   <tr key={_id}>
                     <td>{index + 1}</td>
-                    <td>{name}</td>
+                    <td>{title}</td>
 
                     <td>
                       <span>
                         <FaTrashAlt
                           size={20}
                           color={"red"}
-                          onClick={() => confirmDelete(slug)}
+                          onClick={() => confirmDelete(_id)}
                         />
                       </span>
                     </td>

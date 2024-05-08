@@ -27,6 +27,7 @@ const Home = () => {
   const products = useSelector(selectProducts);
   const orders = useSelector(selectOrders);
   const totalOrderAmount = useSelector(selectTotalOrderAmount);
+
   useEffect(() => {
     if (products.length === 0) {
       dispatch(getProducts());
@@ -35,6 +36,7 @@ const Home = () => {
       dispatch(getOrders());
     }
   }, [dispatch, products, orders]);
+
   useEffect(() => {
     dispatch(CALC_TOTAL_ORDER_AMOUNT());
   }, [dispatch, orders]);
@@ -46,7 +48,7 @@ const Home = () => {
         <InfoBox
           cardClass={`${styles.card} ${styles.card1}`}
           title={"Earnings"}
-          count={`$${totalOrderAmount}`}
+          count={`${totalOrderAmount} VND`}
           icon={earningIcon}
         />
         <InfoBox

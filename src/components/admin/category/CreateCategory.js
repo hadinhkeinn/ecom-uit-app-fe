@@ -11,18 +11,18 @@ import {
 } from "../../../redux/features/categoryAndBrand/categoryAndBrandSlice";
 
 const CreateCategory = ({ reloadCategory }) => {
-  const [name, setName] = useState("");
+  const [title, setName] = useState("");
 
   const { isLoading } = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
   const saveCat = async (e) => {
     e.preventDefault();
-    if (name.length < 3) {
-      return toast.error("Coupon must be up to 3 characters");
+    if (title.length < 3) {
+      return toast.error("Category must be up to 3 characters");
     }
     const formData = {
-      name,
+      title,
     };
     // console.log(formData);
     dispatch(createCategory(formData));
@@ -48,8 +48,8 @@ const CreateCategory = ({ reloadCategory }) => {
             <input
               type="text"
               placeholder="Category name"
-              name="name"
-              value={name}
+              name="title"
+              value={title}
               onChange={(e) => setName(e.target.value)}
               required
             />

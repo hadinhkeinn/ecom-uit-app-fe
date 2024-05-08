@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useId } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getOrders } from "../../../redux/features/product/orderSlice";
@@ -16,8 +16,8 @@ const Orders = () => {
     dispatch(getOrders());
   }, [dispatch]);
 
-  const handleClick = (id) => {
-    navigate("/admin/order-details/" + id);
+  const handleClick = (orderId, userId) => {
+    navigate("/admin/order-details/" + orderId, { state: { userId } });
   };
 
   return (
@@ -40,29 +40,38 @@ const Orders = () => {
                     <th>s/n</th>
                     <th>Date</th>
                     <th>Order ID</th>
+                    <th>User ID</th>
                     <th>Order Amount</th>
                     <th>Order Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   {orders.map((order, index) => {
-                    const {
-                      _id,
-                      orderDate,
-                      orderTime,
-                      orderAmount,
-                      orderStatus,
-                    } = order;
+                    const userId = order.orderBy._id;
+                    const orderId = order._id;
+
+                    const orderDate = new Date(
+                      order.createdAt
+                    ).toLocaleDateString();
+                    const orderTime = new Date(
+                      order.createdAt
+                    ).toLocaleTimeString();
+                    const orderAmount = order.paymentIntent.amount;
+                    const orderStatus = order.orderStatus;
                     return (
-                      <tr key={_id} onClick={() => handleClick(_id)}>
+                      <tr
+                        key={userId}
+                        onClick={() => handleClick(orderId, userId)}
+                      >
                         <td>{index + 1}</td>
                         <td>
                           {orderDate} at {orderTime}
                         </td>
-                        <td>{_id}</td>
+                        <td>{orderId}</td>
+                        <td>{userId}</td>
                         <td>
-                          {"$"}
                           {orderAmount}
+                          {" VNĐ"}
                         </td>
                         <td>
                           <p

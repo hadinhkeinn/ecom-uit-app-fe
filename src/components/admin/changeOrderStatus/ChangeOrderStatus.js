@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { updateOrderStatus } from "../../../redux/features/product/orderSlice";
 import { useSelector } from "react-redux";
 
-const ChangeOrderStatus = ({ order, id }) => {
+const ChangeOrderStatus = ({ order, orderId }) => {
   const [status, setStatus] = useState("");
   const { isLoading } = useSelector((state) => state.order);
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const ChangeOrderStatus = ({ order, id }) => {
       <div className={styles.status}>
         <Card cardClass={styles.card}>
           <h4>Update Status</h4>
-          <form onSubmit={(e) => editOrder(e, id)}>
+          <form onSubmit={(e) => editOrder(e, orderId)}>
             <span>
               <select
                 value={status}

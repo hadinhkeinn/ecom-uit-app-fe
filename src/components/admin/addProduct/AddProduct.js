@@ -10,15 +10,11 @@ import ProductForm from "../productForm/ProductForm";
 
 import "./AddProduct.scss";
 import { toast } from "react-toastify";
-import {
-  getBrands,
-  getCategories,
-} from "../../../redux/features/categoryAndBrand/categoryAndBrandSlice";
+import { getCategories } from "../../../redux/features/categoryAndBrand/categoryAndBrandSlice";
 
 const initialState = {
   name: "",
   category: "",
-  brand: "",
   quantity: "",
   price: "",
   color: "",
@@ -36,13 +32,11 @@ const AddProduct = () => {
 
   const isLoading = useSelector(selectIsLoading);
 
-  const { name, category, brand, price, quantity, color, regularPrice } =
-    product;
-  const { categories, brands } = useSelector((state) => state.category);
-
+  const { name, category, price, quantity, color, regularPrice } = product;
+  const { categories } = useSelector((state) => state.category);
+  console.log(categories);
   useEffect(() => {
     dispatch(getCategories());
-    dispatch(getBrands());
   }, [dispatch]);
 
   const handleInputChange = (e) => {
@@ -67,7 +61,6 @@ const AddProduct = () => {
       name: name,
       sku: generateKSKU(category),
       category: category,
-      brand: brand,
       color: color,
       quantity: Number(quantity),
       regularPrice: regularPrice,
@@ -82,18 +75,6 @@ const AddProduct = () => {
 
     navigate("/admin/all-products");
   };
-  const [filteredBrands, setFilteredBrands] = useState([]);
-  function filterBrands(selectedCategoryName) {
-    const newBrands = brands.filter(
-      (brand) => brand.category === selectedCategoryName
-    );
-    setFilteredBrands(newBrands);
-  }
-
-  useEffect(() => {
-    filterBrands(category);
-    // console.log(filteredBrands);
-  }, [category]);
 
   return (
     <div>
@@ -112,7 +93,6 @@ const AddProduct = () => {
         handleInputChange={handleInputChange}
         saveProduct={saveProduct}
         categories={categories}
-        filteredBrands={filteredBrands}
         isEditing={false}
       />
     </div>

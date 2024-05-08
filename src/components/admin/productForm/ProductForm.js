@@ -19,7 +19,6 @@ const ProductForm = ({
   handleImageChange,
   saveProduct,
   categories,
-  filteredBrands,
   isEditing,
 }) => {
   const img =
@@ -94,46 +93,10 @@ const ProductForm = ({
             {categories.length > 0 &&
               categories.map((cat) => (
                 <option key={cat._id} value={cat._name}>
-                  {cat.name}
+                  {cat.title}
                 </option>
               ))}
           </select>
-
-          {/* <input
-            type="text"
-            placeholder="Product Category"
-            name="category"
-            value={product?.category}
-            onChange={handleInputChange}
-          /> */}
-
-          <label>Product Brand:</label>
-          <select
-            name="brand"
-            value={product?.brand}
-            className="form-control"
-            onChange={handleInputChange}
-          >
-            {isEditing ? (
-              <option>{product?.brand}</option>
-            ) : (
-              <option>Select Brand</option>
-            )}
-
-            {filteredBrands.length > 0 &&
-              filteredBrands.map((brand) => (
-                <option key={brand._id} value={brand.name}>
-                  {brand.name}
-                </option>
-              ))}
-          </select>
-          {/* <input
-            type="text"
-            placeholder="Brand"
-            name="brand"
-            value={product?.brand}
-            onChange={handleInputChange}
-          /> */}
           <label>Product Color:</label>
           <input
             type="text"

@@ -10,17 +10,17 @@ const createCoupon = async (formData) => {
 
 // Get all Coupons
 const getCoupons = async () => {
-  const response = await axios.get(API_URL + "getCoupons");
+  const response = await axios.get(API_URL);
   return response.data;
 };
 
-// Get a Product
+// Get a coupon
 const getCoupon = async (couponName) => {
   const response = await axios.get(API_URL + couponName);
   return response.data;
 };
 
-// Delete a Product
+// Delete a coupon
 const deleteCoupon = async (id) => {
   const response = await axios.delete(API_URL + id);
   return response.data.message;

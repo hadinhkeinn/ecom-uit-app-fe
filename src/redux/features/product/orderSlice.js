@@ -36,7 +36,8 @@ export const getOrders = createAsyncThunk(
   "orders/getOrders",
   async (_, thunkAPI) => {
     try {
-      return await orderService.getOrders();
+      const response = await orderService.getOrders();
+      return response;
     } catch (error) {
       const message =
         (error.response &&
@@ -93,14 +94,10 @@ const orderSlice = createSlice({
   initialState,
   reducers: {
     CALC_TOTAL_ORDER_AMOUNT(state, action) {
-      const array = [];
-      state.orders.map((item) => {
-        const { orderAmount } = item;
-        return array.push(orderAmount);
-      });
-      const totalAmount = array.reduce((a, b) => {
-        return a + b;
-      }, 0);
+      const orders = JSON.parse(JSON.stringify(state.orders));
+      console.log(orders);
+      const array = orders.map((order) => order.paymentIntent.amount);
+      const totalAmount = array.reduce((a, b) => a + b, 0);
       state.totalOrderAmount = totalAmount;
     },
   },
@@ -175,6 +172,7 @@ const orderSlice = createSlice({
 export const { CALC_TOTAL_ORDER_AMOUNT } = orderSlice.actions;
 
 export const selectOrders = (state) => state.order.orders;
+export const selectOrder = (state) => state.order.order;
 export const selectTotalOrderAmount = (state) => state.order.totalOrderAmount;
 
 export default orderSlice.reducer;
