@@ -6,15 +6,17 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { Spinner } from "../../components/loader/Loader";
 
-const Order = ({ userId }) => {
+const Order = () => {
   const pdfRef = useRef();
   const dispatch = useDispatch();
+  const { id } = useParams();
+
 
   const { isLoading, order } = useSelector((state) => state.order);
 
   useEffect(() => {
-    dispatch(getOrder(userId));
-  }, [dispatch, userId]);
+    dispatch(getOrder(id));
+  }, [dispatch, id]);
 
   const downloadPDF = () => {
     const input = pdfRef.current;

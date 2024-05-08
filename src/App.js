@@ -34,6 +34,7 @@ import ReviewProducts from "./pages/reviewProducts/ReviewProducts";
 // import Wallet from "./pages/wallet/Wallet";
 import Wishlist from "./pages/wishlist/Wishlist";
 import { AnimatePresence } from "framer-motion";
+import CheckoutLater from "./pages/checkout/CheckoutLater";
 
 axios.defaults.withCredentials = true;
 // Deploy
@@ -82,6 +83,7 @@ function App() {
 
           <Route path="/checkout-details" element={<CheckoutDetails />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkout-later" element={<CheckoutLater />} />
           {/* <Route
             path="/checkout-flutterwave"
             element={<CheckoutFlutterwave />}

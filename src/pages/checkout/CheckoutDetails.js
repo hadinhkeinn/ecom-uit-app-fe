@@ -17,12 +17,12 @@ import { toast } from "react-toastify";
 
 const initialAddressState = {
   name: "",
-  line1: "",
-  line2: "",
+  // line1: "",
+  address: "",
   city: "",
-  state: "",
-  postal_code: "",
-  country: "",
+  // state: "",
+  // postal_code: "",
+  // country: "",
   phone: "",
 };
 
@@ -70,11 +70,11 @@ const CheckoutDetails = () => {
     dispatch(SAVE_SHIPPING_ADDRESS(shippingAddress));
     dispatch(SAVE_BILLING_ADDRESS(billingAddress));
     if (paymentMethod === "") {
-      toast.info("Please select a payment method!!!")
+      toast.info("Vui lòng chọn phương thức thanh toán!!!")
       navigate("/cart");
     }
-    if (paymentMethod === "stripe") {
-      navigate("/checkout");
+    if (paymentMethod === "ttsau") {
+      navigate("/checkout-later");
     }
     if (paymentMethod === "flutterwave") {
       navigate("/checkout-flutterwave");
@@ -85,8 +85,6 @@ const CheckoutDetails = () => {
     if (paymentMethod === "wallet") {
       navigate("/checkout-wallet");
     }
-
-    // return toast.error("No payment method selected");
   };
 
   return (
@@ -106,23 +104,23 @@ const CheckoutDetails = () => {
                 value={shippingAddress.name}
                 onChange={(e) => handleShipping(e)}
               />
-              <label>Địa chỉ 1</label>
+              <label>Địa chỉ chi tiết</label>
               <input
                 type="text"
                 placeholder=""
                 required
-                name="line1"
-                value={shippingAddress.line1}
+                name="address"
+                value={shippingAddress.address}
                 onChange={(e) => handleShipping(e)}
               />
-              <label>Địa chỉ 2</label>
+              {/* <label>Địa chỉ 2</label>
               <input
                 type="text"
                 placeholder=""
                 name="line2"
                 value={shippingAddress.line2}
                 onChange={(e) => handleShipping(e)}
-              />
+              /> */}
               <label>Tỉnh/Thành phố</label>
               <input
                 type="text"
@@ -132,38 +130,6 @@ const CheckoutDetails = () => {
                 value={shippingAddress.city}
                 onChange={(e) => handleShipping(e)}
               />
-              {/* <label>State</label>
-              <input
-                type="text"
-                placeholder="State"
-                required
-                name="state"
-                value={shippingAddress.state}
-                onChange={(e) => handleShipping(e)}
-              /> */}
-              {/* <label>Postal code</label>
-              <input
-                type="text"
-                placeholder="Postal code"
-                required
-                name="postal_code"
-                value={shippingAddress.postal_code}
-                onChange={(e) => handleShipping(e)}
-              /> */}
-              {/* COUNTRY INPUT */}
-              {/* <CountryDropdown
-                className={styles.select}
-                valueType="short"
-                value={shippingAddress.country}
-                onChange={(val) =>
-                  handleShipping({
-                    target: {
-                      name: "country",
-                      value: val,
-                    },
-                  })
-                }
-              /> */}
               <label>Số điện thoại</label>
               <input
                 type="text"
@@ -174,87 +140,6 @@ const CheckoutDetails = () => {
                 onChange={(e) => handleShipping(e)}
               />
             </Card>
-            {/* BILLING ADDRESS */}
-            {/* <Card cardClass={styles.card}>
-              <h3>Billing Address</h3>
-              <label>Recipient Name</label>
-              <input
-                type="text"
-                placeholder="Name"
-                required
-                name="name"
-                value={billingAddress.name}
-                onChange={(e) => handleBilling(e)}
-              />
-              <label>Address line 1</label>
-              <input
-                type="text"
-                placeholder="Address line 1"
-                required
-                name="line1"
-                value={billingAddress.line1}
-                onChange={(e) => handleBilling(e)}
-              />
-              <label>Address line 2</label>
-              <input
-                type="text"
-                placeholder="Address line 2"
-                name="line2"
-                value={billingAddress.line2}
-                onChange={(e) => handleBilling(e)}
-              />
-              <label>City</label>
-              <input
-                type="text"
-                placeholder="City"
-                required
-                name="city"
-                value={billingAddress.city}
-                onChange={(e) => handleBilling(e)}
-              />
-              <label>State</label>
-              <input
-                type="text"
-                placeholder="State"
-                required
-                name="state"
-                value={billingAddress.state}
-                onChange={(e) => handleBilling(e)}
-              />
-              <label>Postal code</label>
-              <input
-                type="text"
-                placeholder="Postal code"
-                required
-                name="postal_code"
-                value={billingAddress.postal_code}
-                onChange={(e) => handleBilling(e)}
-              /> */}
-            {/* COUNTRY INPUT */}
-            {/* <CountryDropdown
-                className={styles.select}
-                valueType="short"
-                value={billingAddress.country}
-                onChange={(val) =>
-                  handleBilling({
-                    target: {
-                      name: "country",
-                      value: val,
-                    },
-                  })
-                }
-              />
-              <label>Phone</label>
-              <input
-                type="text"
-                placeholder="Phone"
-                required
-                name="phone"
-                value={billingAddress.phone}
-                onChange={(e) => handleBilling(e)}
-              />
-              
-            </Card> */}
             <button type="submit" className="--btn --btn-primary">
               Đặt hàng
             </button>

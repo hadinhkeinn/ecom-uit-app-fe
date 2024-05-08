@@ -16,8 +16,8 @@ const Orders = () => {
     dispatch(getOrders());
   }, [dispatch]);
 
-  const handleClick = (orderId, userId) => {
-    navigate("/admin/order-details/" + orderId, { state: { userId } });
+  const handleClick = (id) => {
+    navigate("/admin/order-details/" + id);
   };
 
   return (
@@ -47,31 +47,23 @@ const Orders = () => {
                 </thead>
                 <tbody>
                   {orders.map((order, index) => {
-                    const userId = order.orderBy._id;
-                    const orderId = order._id;
-
-                    const orderDate = new Date(
-                      order.createdAt
-                    ).toLocaleDateString();
-                    const orderTime = new Date(
-                      order.createdAt
-                    ).toLocaleTimeString();
-                    const orderAmount = order.paymentIntent.amount;
-                    const orderStatus = order.orderStatus;
+                    const {
+                      _id,
+                      orderDate,
+                      orderTime,
+                      orderAmount,
+                      orderStatus,
+                    } = order;
                     return (
-                      <tr
-                        key={userId}
-                        onClick={() => handleClick(orderId, userId)}
-                      >
+                      <tr key={_id} onClick={() => handleClick(_id)}>
                         <td>{index + 1}</td>
                         <td>
                           {orderDate} at {orderTime}
                         </td>
-                        <td>{orderId}</td>
-                        <td>{userId}</td>
+                        <td>{_id}</td>
                         <td>
+                          {"$"}
                           {orderAmount}
-                          {" VNĐ"}
                         </td>
                         <td>
                           <p

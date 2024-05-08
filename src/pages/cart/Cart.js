@@ -213,30 +213,6 @@ const Cart = () => {
                       <span className="custom-radio" />
                       Thanh toán qua Vnpay
                     </label>
-                    {/* <label htmlFor={"paypal"} className="radio-label">
-                      <input
-                        className="radio-input"
-                        type="radio"
-                        name={"paymentMethod"}
-                        id={"paypal"}
-                        value={"paypal"}
-                        onChange={(e) => setPaymentMethod(e.target.value)}
-                      />
-                      <span className="custom-radio" />
-                      Paypal
-                    </label>
-                    <label htmlFor={"wallet"} className="radio-label">
-                      <input
-                        className="radio-input"
-                        type="radio"
-                        name={"paymentMethod"}
-                        id={"wallet"}
-                        value={"wallet"}
-                        onChange={(e) => setPaymentMethod(e.target.value)}
-                      />
-                      <span className="custom-radio" />
-                      Wallet
-                    </label> */}
                     <button
                       type="submit"
                       className="--btn --btn-primary --btn-block"

@@ -20,7 +20,7 @@ const ProductFilter = () => {
 
   const allCategories = [
     "Tất cả",
-    ...new Set(products?.map((product) => product.category)),
+    ...new Set(products?.map((product) => product.category).sort()),
   ];
 
   useEffect(() => {

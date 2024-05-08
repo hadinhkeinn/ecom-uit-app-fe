@@ -8,26 +8,21 @@ import { Spinner } from "../../loader/Loader";
 import ChangeOrderStatus from "../changeOrderStatus/ChangeOrderStatus";
 import Order from "../../../pages/orderDetails/Order";
 
-const OrderDetails = (props) => {
-  const { orderId } = useParams();
+const OrderDetails = () => {
+  const { id } = useParams();
   const location = useLocation();
-  const { userId } = location.state.userId;
 
+  const { isLoading, isError, message, order } = useSelector(
+    (state) => state.order
+  );
   const dispatch = useDispatch();
-
-  const { order } = useSelector((state) => state.order);
-  console.log(order);
-
-  useEffect(() => {
-    dispatch(getOrder(userId));
-  }, [dispatch, userId]);
 
   return (
     <>
-      <Order userId={userId} />
+      <Order />
 
       <div className="container">
-        <ChangeOrderStatus order={order} orderId={orderId} />
+        <ChangeOrderStatus order={order} orderId={id} />
       </div>
     </>
   );

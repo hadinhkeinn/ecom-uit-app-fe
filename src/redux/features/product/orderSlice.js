@@ -64,7 +64,7 @@ export const getOrder = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString();
-      console.log(message);
+      // console.log(message);
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -94,10 +94,14 @@ const orderSlice = createSlice({
   initialState,
   reducers: {
     CALC_TOTAL_ORDER_AMOUNT(state, action) {
-      const orders = JSON.parse(JSON.stringify(state.orders));
-      console.log(orders);
-      const array = orders.map((order) => order.paymentIntent.amount);
-      const totalAmount = array.reduce((a, b) => a + b, 0);
+      const array = [];
+      state.orders.map((item) => {
+        const { orderAmount } = item;
+        return array.push(orderAmount);
+      });
+      const totalAmount = array.reduce((a, b) => {
+        return a + b;
+      }, 0);
       state.totalOrderAmount = totalAmount;
     },
   },
@@ -158,7 +162,7 @@ const orderSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        toast.success("Order updated successfully");
+        toast.success("Cập nhật trạng thái đơn hàng thành công!");
       })
       .addCase(updateOrderStatus.rejected, (state, action) => {
         state.isLoading = false;
