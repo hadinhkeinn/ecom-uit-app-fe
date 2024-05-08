@@ -11,7 +11,6 @@ const Order = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-
   const { isLoading, order } = useSelector((state) => state.order);
 
   useEffect(() => {
@@ -47,9 +46,9 @@ const Order = () => {
   return (
     <section>
       <div className="container" ref={pdfRef}>
-        <h2>Order Details</h2>
+        <h2>Chi tiết đơn hàng</h2>
         <div>
-          <Link to="/order-history">&larr; Back To Orders</Link>
+          <Link to="/order-history">&larr; Trờ về Đơn hàng</Link>
         </div>
         <br />
         <div className="table">
@@ -58,42 +57,42 @@ const Order = () => {
             <Spinner />
           ) : (
             <>
-              <p>{/* <b>Ship to</b> {address}, {province}, {country} */}</p>
               <p>
-                <b>Order ID</b> {order?._id}
+                <b>Mã đơn hàng: </b> {order?._id}
               </p>
               <p>
-                <b>Order Amount</b> ${order?.orderAmount}
+                <b>Tổng tiền: </b> ${order?.orderAmount}
               </p>
               <p>
-                <b>Coupon</b> {order?.coupon.name} | {order?.coupon?.discount}%
+                <b>Mã giảm giá: </b> {order?.coupon.name} |{" "}
+                {order?.coupon?.discount}%
               </p>
               <p>
-                <b>Payment Method</b> {order?.paymentMethod}
+                <b>Phương thức thanh toán: </b> {order?.paymentMethod}
               </p>
               <p>
-                <b>Order Status</b> {order?.orderStatus}
+                <b>Trạng thái: </b> {order?.orderStatus}
               </p>
               <p>
-                <b>Shipping Address</b>
+                <b>Người nhận: </b> {order?.shippingAddress.name}
+              </p>
+              <p>
+                <b>Địa chỉ nhận hàng: </b>
+                {order?.shippingAddress.line1},{order?.shippingAddress.line2},{" "}
+                {order?.shippingAddress.city}
                 <br />
-                Address: {order?.shippingAddress.line1},
-                {order?.shippingAddress.line2}, {order?.shippingAddress.city}
                 <br />
-                State: {order?.shippingAddress.state}
-                <br />
-                Country: {order?.shippingAddress.country}
               </p>
               <br />
               <table>
                 <thead>
                   <tr>
-                    <th>s/n</th>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Action</th>
+                    <th>STT</th>
+                    <th>Sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng tiền</th>
+                    <th>Đánh giá</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -120,7 +119,7 @@ const Order = () => {
                         <td className={"icons"}>
                           <Link to={`/review-product/${_id}`}>
                             <button className="--btn --btn-primary">
-                              Review Product
+                              Đánh giá
                             </button>
                           </Link>
                         </td>
@@ -135,7 +134,7 @@ const Order = () => {
       </div>
       <div className="--center-all --my">
         <button className="--btn --btn-primary --btn-lg" onClick={downloadPDF}>
-          Download as PDF
+          Xuất hóa đơn PDF
         </button>
       </div>
     </section>

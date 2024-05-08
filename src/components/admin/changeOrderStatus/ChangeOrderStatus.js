@@ -28,7 +28,7 @@ const ChangeOrderStatus = ({ order, orderId }) => {
 
       <div className={styles.status}>
         <Card cardClass={styles.card}>
-          <h4>Update Status</h4>
+          <h4>Cập nhật trạng thái đơn hàng</h4>
           <form onSubmit={(e) => editOrder(e, orderId)}>
             <span>
               <select
@@ -36,19 +36,19 @@ const ChangeOrderStatus = ({ order, orderId }) => {
                 onChange={(e) => setStatus(e.target.value)}
               >
                 <option value="" disabled>
-                  -- Choose one --
+                  -- Chọn --
                 </option>
-                <option value="Order Placed">Order Placed...</option>
-                <option value="On Delivery">On Delivery...</option>
-                <option value="Processing">Processing...</option>
-                <option value="Dispatched">Dispatched...</option>
-                <option value="Cancelled">Cancelled...</option>
-                <option value="Delivered">Delivered</option>
+                <option value="Đang chờ">Đang chờ...</option>
+                <option value="Đã xác nhận">Đã xác nhận...</option>
+                <option value="Đang vận chuyển">Đang vận chuyển...</option>
+                <option value="Đã giao hàng">Đã giao hàng...</option>
+                <option value="Hoàn thành">Hoàn thành...</option>
+                <option value="Đã hủy">Đã hủy...</option>
               </select>
             </span>
             <span>
               <button type="submit" className="--btn --btn-primary">
-                Update Status
+                Cập nhật
               </button>
             </span>
           </form>

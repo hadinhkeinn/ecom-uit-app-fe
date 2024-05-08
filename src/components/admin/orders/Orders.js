@@ -23,9 +23,9 @@ const Orders = () => {
   return (
     <section>
       <div className={`container order`}>
-        <h2>All Orders</h2>
+        <h2>Tất cả đơn hàng</h2>
         <p>
-          Open an order to <b>Change Order Status.</b>
+          Chọn đơn hàng để <b>thay đổi trang thái đơn hàng</b>
         </p>
         <br />
         <>
@@ -37,18 +37,19 @@ const Orders = () => {
               <table>
                 <thead>
                   <tr>
-                    <th>s/n</th>
-                    <th>Date</th>
-                    <th>Order ID</th>
-                    <th>User ID</th>
-                    <th>Order Amount</th>
-                    <th>Order Status</th>
+                    <th>STT</th>
+                    <th>Thời gian đặt</th>
+                    <th>Mã đơn hàng</th>
+                    <th>Mã khách hàng</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
                   </tr>
                 </thead>
                 <tbody>
                   {orders.map((order, index) => {
                     const {
                       _id,
+                      user,
                       orderDate,
                       orderTime,
                       orderAmount,
@@ -58,17 +59,18 @@ const Orders = () => {
                       <tr key={_id} onClick={() => handleClick(_id)}>
                         <td>{index + 1}</td>
                         <td>
-                          {orderDate} at {orderTime}
+                          {orderDate} lúc {orderTime}
                         </td>
                         <td>{_id}</td>
+                        <td>{user}</td>
                         <td>
-                          {"$"}
                           {orderAmount}
+                          {" VNĐ"}
                         </td>
                         <td>
                           <p
                             className={
-                              orderStatus !== "Delivered"
+                              orderStatus !== "Hoàn thành"
                                 ? `${"pending"}`
                                 : `${"delivered"}`
                             }
