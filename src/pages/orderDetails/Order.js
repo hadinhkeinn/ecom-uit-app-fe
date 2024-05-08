@@ -61,7 +61,7 @@ const Order = () => {
                 <b>Mã đơn hàng: </b> {order?._id}
               </p>
               <p>
-                <b>Tổng tiền: </b> ${order?.orderAmount}
+                <b>Tổng tiền: </b> {order?.orderAmount}₫
               </p>
               <p>
                 <b>Mã giảm giá: </b> {order?.coupon.name} |{" "}
@@ -115,7 +115,7 @@ const Order = () => {
                         </td>
                         <td>{price}</td>
                         <td>{cartQuantity}</td>
-                        <td>{(price * cartQuantity).toFixed(2)}</td>
+                        <td>{(price * cartQuantity)}</td>
                         <td className={"icons"}>
                           <Link to={`/review-product/${_id}`}>
                             <button className="--btn --btn-primary">
