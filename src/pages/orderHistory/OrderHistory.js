@@ -64,13 +64,11 @@ const OrderHistory = () => {
                           {orderDate} vào lúc {orderTime}
                         </td>
                         <td>{_id}</td>
-                        <td>
-                          {orderAmount}₫
-                        </td>
+                        <td>{orderAmount}₫</td>
                         <td>
                           <p
                             className={
-                              orderStatus !== "Delivered"
+                              orderStatus !== "Hoàn thành"
                                 ? `${"pending"}`
                                 : `${"delivered"}`
                             }

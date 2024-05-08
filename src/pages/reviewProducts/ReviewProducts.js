@@ -100,14 +100,14 @@ const ReviewProducts = () => {
   return (
     <section>
       <div className="container review">
-        <h2>Review Products</h2>
+        <h2>Đánh giá sản phẩm</h2>
         {isLoading && product === null ? (
           // <img src={spinnerImg} alt="Loading..." style={{ width: "50px" }} />
           <Spinner />
         ) : (
           <>
             <p>
-              <b>Product name:</b> {product?.name}
+              <b>Tên sản phẩm</b> {product?.name}
             </p>
             <img
               src={product?.image[0]}
@@ -118,7 +118,7 @@ const ReviewProducts = () => {
         )}
         {userReview?.length > 0 && !isEditing ? (
           <Card cardClass={"card"}>
-            <h3>Product Reviews</h3>
+            <h3>Đánh giá</h3>
             <div>
               {userReview.map((item, index) => {
                 const { star, review, reviewDate, name, userID } = item;
@@ -159,7 +159,7 @@ const ReviewProducts = () => {
         ) : (
           <Card cardClass={"card --width-500px --p"}>
             <form>
-              <label>Rating:</label>
+              <label>Đánh giá:</label>
               <StarRating
                 starDimension="20px"
                 starSpacing="2px"
@@ -170,7 +170,7 @@ const ReviewProducts = () => {
                 editing={true}
                 isSelectable={true}
               />
-              <label>Review</label>
+              <label>Nội dung</label>
               <textarea
                 value={review}
                 required
@@ -183,7 +183,7 @@ const ReviewProducts = () => {
                   onClick={(e) => submitReview(e)}
                   className="--btn --btn-primary"
                 >
-                  Submit Review
+                  Đánh giá
                 </button>
               ) : (
                 <div className="--flex-start">
@@ -191,10 +191,10 @@ const ReviewProducts = () => {
                     onClick={(e) => editReview(e)}
                     className="--btn --btn-primary"
                   >
-                    Update Review
+                    Cập nhật
                   </button>
                   <button onClick={() => setIsEditing(false)} className="--btn">
-                    Cancel
+                    Hủy
                   </button>
                 </div>
               )}

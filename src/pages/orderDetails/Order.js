@@ -92,7 +92,6 @@ const Order = () => {
                     <th>Giá</th>
                     <th>Số lượng</th>
                     <th>Tổng tiền</th>
-                    <th>Đánh giá</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -116,13 +115,6 @@ const Order = () => {
                         <td>{price}</td>
                         <td>{cartQuantity}</td>
                         <td>{(price * cartQuantity).toFixed(2)}</td>
-                        <td className={"icons"}>
-                          <Link to={`/review-product/${_id}`}>
-                            <button className="--btn --btn-primary">
-                              Đánh giá
-                            </button>
-                          </Link>
-                        </td>
                       </tr>
                     );
                   })}
