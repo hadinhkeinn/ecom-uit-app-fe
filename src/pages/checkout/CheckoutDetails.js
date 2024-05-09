@@ -76,14 +76,8 @@ const CheckoutDetails = () => {
     if (paymentMethod === "ttsau") {
       navigate("/checkout-later");
     }
-    if (paymentMethod === "flutterwave") {
-      navigate("/checkout-flutterwave");
-    }
-    if (paymentMethod === "paypal") {
-      navigate("/checkout-paypal");
-    }
-    if (paymentMethod === "wallet") {
-      navigate("/checkout-wallet");
+    if (paymentMethod === "vnpay") {
+      navigate("/checkout-vnpay");
     }
   };
 
