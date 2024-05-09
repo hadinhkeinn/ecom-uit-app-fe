@@ -40,7 +40,7 @@ const CheckoutLater = () => {
             orderDate: today.toDateString(),
             orderTime: today.toLocaleTimeString(),
             orderAmount: cartTotalAmount,
-            orderStatus: "Order Placed",
+            // orderStatus: "Order Placed",
             cartItems,
             shippingAddress,
             paymentMethod,

@@ -12,6 +12,7 @@ const Order = () => {
   const { id } = useParams();
 
   const { isLoading, order } = useSelector((state) => state.order);
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getOrder(id));
@@ -92,7 +93,7 @@ const Order = () => {
                     <th>Giá</th>
                     <th>Số lượng</th>
                     <th>Tổng tiền</th>
-                    <th>Đánh giá</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -117,11 +118,13 @@ const Order = () => {
                         <td>{cartQuantity}</td>
                         <td>{(price * cartQuantity)}</td>
                         <td className={"icons"}>
-                          <Link to={`/review-product/${_id}`}>
-                            <button className="--btn --btn-primary">
-                              Đánh giá
-                            </button>
-                          </Link>
+                          {user?.role === "customer" && order?.orderStatus === "Hoàn thành" &&
+                            <Link to={`/review-product/${_id}`}>
+                              <button className="--btn --btn-primary">
+                                Đánh giá
+                              </button>
+                            </Link>
+                          }
                         </td>
                       </tr>
                     );
