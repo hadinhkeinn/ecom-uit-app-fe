@@ -7,6 +7,7 @@ import {
     CALCULATE_SUBTOTAL,
     selectCartItems,
     selectCartTotalAmount,
+    CLEAR_CART,
 } from "../../redux/features/product/cartSlice";
 import {
     selectPaymentMethod,
@@ -54,6 +55,7 @@ const CheckoutLater = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         saveOrder();
+        dispatch(CLEAR_CART());
         navigate("/order-history");
     };
 
