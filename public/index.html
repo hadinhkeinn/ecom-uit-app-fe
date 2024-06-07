@@ -1,23 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
 
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
 
-    <title>eComUIT</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="loader"></div>
-    <div id="root"></div>
-  </body>
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <title>eComUIT</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="loader"></div>
+  <div id="root"></div>
+  <link rel="stylesheet"
+    href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+  <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+  <df-messenger project-id="uit-e-commerce" agent-id="417c04d1-a60c-4704-9b5b-883ce5a9d989" language-code="vi"
+    max-query-length="-1">
+    <df-messenger-chat-bubble chat-title="">
+    </df-messenger-chat-bubble>
+  </df-messenger>
+  <style>
+    df-messenger {
+      z-index: 999;
+      position: fixed;
+      --df-messenger-font-color: #000;
+      --df-messenger-font-family: Google Sans;
+      --df-messenger-chat-background: #f3f6fc;
+      --df-messenger-message-user-background: #d3e3fd;
+      --df-messenger-message-bot-background: #fff;
+      bottom: 16px;
+      right: 16px;
+    }
+  </style>
+</body>
+
 </html>
