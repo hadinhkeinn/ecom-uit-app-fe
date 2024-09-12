@@ -23,15 +23,10 @@ import Product from "./pages/product/Product";
 import ProductDetails from "./components/product/productDetails/productDetails";
 import Cart from "./pages/cart/Cart";
 import CheckoutDetails from "./pages/checkout/CheckoutDetails";
-import Checkout from "./pages/checkout/Checkout";
 import CheckoutSuccess from "./pages/checkout/CheckoutSuccess";
 import OrderHistory from "./pages/orderHistory/OrderHistory";
 import OrderDetails from "./pages/orderDetails/OrderDetails";
 import ReviewProducts from "./pages/reviewProducts/ReviewProducts";
-// import CheckoutFlutterwave from "./pages/checkout/CheckoutFlutterwave";
-// import CheckoutPaypal from "./pages/checkout/CheckoutPaypal";
-// import CheckoutWallet from "./pages/checkout/CheckoutWallet";
-// import Wallet from "./pages/wallet/Wallet";
 import Wishlist from "./pages/wishlist/Wishlist";
 import { AnimatePresence } from "framer-motion";
 import CheckoutLater from "./pages/checkout/CheckoutLater";
@@ -83,16 +78,9 @@ function App() {
           <Route path="/cart" element={<Cart />} />
 
           <Route path="/checkout-details" element={<CheckoutDetails />} />
-          <Route path="/checkout" element={<Checkout />} />
+
           <Route path="/checkout-later" element={<CheckoutLater />} />
           <Route path="/checkout-vnpay" element={<CheckoutVnpay />} />
-          {/* <Route
-            path="/checkout-flutterwave"
-            element={<CheckoutFlutterwave />}
-          /> */}
-          {/* <Route path="/checkout-paypal" element={<CheckoutPaypal />} /> */}
-          {/* <Route path="/checkout-wallet" element={<CheckoutWallet />} /> */}
-          {/* <Route path="/wallet" element={<Wallet />} /> */}
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/checkout-success" element={<CheckoutSuccess />} />
 
